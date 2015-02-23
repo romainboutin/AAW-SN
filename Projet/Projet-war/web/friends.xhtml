@@ -6,15 +6,23 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+          
       xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <h:outputStylesheet name="dist/css/bootstrap.min.css" />
         <h:outputStylesheet name="dist/css/bootstrap-theme.min.css" />
+        
+        <h:outputScript name="dist/js/bootstrap.min.js"></h:outputScript>
+        <h:outputScript name="jquery-ui-1.11.2.custom/external/jquery/jquery.js"></h:outputScript>
+        <h:outputScript name="jquery-ui-1.11.2.custom/jquery-ui.js"></h:outputScript>
+        
+        
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
+    <h:body  style="background: black">
          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
               <div class="navbar-header">
@@ -27,19 +35,22 @@ and open the template in the editor.
                 <a class="navbar-brand" href="#">Yolo Swag Social NW</a>
               </div>
               <div class="navbar-collapse collapse">
-                <h:form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" role="form">
                   <div class="form-group">
-                    <input type="text" jsf:value="#{UserMB.mail}" placeholder="Email" class="form-control" />
+                      <p style="color: white">#{UserMB.firstname} - #{UserMB.lastname}</p>
                   </div>
                   <div class="form-group">
-                    <input type="password" jsf:value="#{UserMB.mdp}" placeholder="Password" class="form-control" />
+                      <button class="btn"> Amis </button>
                   </div>
-                    <button jsf:action="#{UserMB.login()}" class="btn btn-success">Login <span class="glyphicon glyphicon-play-circle"></span></button>
-                    <button jsf:action="#{UserMB.newAccount()}" class="btn">Register <span class="glyphicon glyphicon-play-circle"></span></button>
-                </h:form>
+                  <div class="form-group">
+                    <input type="text" placeholder="recherche" class="form-control" />
+                  </div>
+                    <button type="submit" class="btn btn-success">logout <span class="glyphicon glyphicon-log-out"></span></button>
+                </form>
               </div><!--/.navbar-collapse -->
             </div>
-          </div>
-        
+        </div>
+        <br></br><br></br><br></br>
+        <p>amis</p>
     </h:body>
 </html>

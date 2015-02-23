@@ -14,7 +14,7 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
+    <h:body style="background: black">
          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
               <div class="navbar-header">
@@ -27,19 +27,28 @@ and open the template in the editor.
                 <a class="navbar-brand" href="#">Yolo Swag Social NW</a>
               </div>
               <div class="navbar-collapse collapse">
-                <h:form class="navbar-form navbar-right">
-                  <div class="form-group">
-                    <input type="text" jsf:value="#{UserMB.mail}" placeholder="Email" class="form-control" />
-                  </div>
-                  <div class="form-group">
-                    <input type="password" jsf:value="#{UserMB.mdp}" placeholder="Password" class="form-control" />
-                  </div>
-                    <button jsf:action="#{UserMB.login()}" class="btn btn-success">Login <span class="glyphicon glyphicon-play-circle"></span></button>
-                    <button jsf:action="#{UserMB.newAccount()}" class="btn">Register <span class="glyphicon glyphicon-play-circle"></span></button>
-                </h:form>
+                
               </div><!--/.navbar-collapse -->
             </div>
           </div>
         
+        <br></br><br></br><br></br><br></br><br></br>
+        <div class="container">
+            <h:form>
+                <div class="form-group">
+                    <input type="text" jsf:value="#{UserMB.mail}" placeholder="Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                   <input type="password" jsf:value="#{UserMB.mdp}" placeholder="Password" class="form-control" />
+                </div>
+                <div class="form-group">
+                   <input type="text" jsf:value="#{UserMB.firstname}" placeholder="Firstname" class="form-control" />
+                </div>
+                <div class="form-group">
+                   <input type="text" jsf:value="#{UserMB.lastname}" placeholder="Lastname" class="form-control" />
+                </div>
+                <button jsf:action="#{UserMB.create()}" class="btn btn-success">Submit <span class="glyphicon glyphicon-play-circle"></span></button>   
+            </h:form>
+        </div>
     </h:body>
 </html>

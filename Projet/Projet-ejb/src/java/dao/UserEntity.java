@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,61 +23,35 @@ public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column
     private String mail;
     
     @Column
-    private String mdp;
+    private String password;
+    
+    @Column
+    private String firstname;
+    
+    @Column
+    private String lastname;
     /*
-    private List<String> amis;
+    @OneToMany(mappedBy="id")
+    private List<UserEntity> friends;
     
-    private List<String> demmandeAmis;
+    @OneToMany(mappedBy="id")
+    private List<UserEntity> friendsRequestSent;
     
-    private List<String> attenteConfiramtion;
+    @OneToMany(mappedBy="id")
+    private List<UserEntity> friendsRequestReceived;
 */
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
-/*
-    public List<String> getAmis() {
-        return amis;
-    }
-
-    public void setAmis(List<String> amis) {
-        this.amis = amis;
-    }
-
-    public List<String> getDemmandeAmis() {
-        return demmandeAmis;
-    }
-
-    public void setDemmandeAmis(List<String> demmandeAmis) {
-        this.demmandeAmis = demmandeAmis;
-    }
-
-    public List<String> getAttenteConfiramtion() {
-        return attenteConfiramtion;
-    }
-
-    public void setAttenteConfiramtion(List<String> attenteConfiramtion) {
-        this.attenteConfiramtion = attenteConfiramtion;
-    } 
-    */
+    
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (mail != null ? mail.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -87,7 +62,7 @@ public class UserEntity implements Serializable {
             return false;
         }
         UserEntity other = (UserEntity) object;
-        if ((this.mail == null && other.mail != null) || (this.mail != null && !this.mail.equals(other.mail))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -95,16 +70,6 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.UserEntity[ mail=" + mail + " ]";
+        return "dao.UserEntity[ id=" + id + " ]";
     }
-    
-    /*
-    public void addAmis(UserEntity u){
-        this.amis.add(u);
-    }
-    
-    public void removeAmis(UserEntity u){
-        this.amis.remove(u);
-    }
-    */
 }

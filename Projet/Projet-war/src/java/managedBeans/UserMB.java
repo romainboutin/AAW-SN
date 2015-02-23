@@ -1,28 +1,31 @@
-package managedBeans;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package managedBeans;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Moi
  */
-@ManagedBean(name = "indexMB")
+@ManagedBean(name = "UserMB")
 @SessionScoped
-public class indexMB {
+public class UserMB {
 
     private String mail;
     private String mdp;
+    private String firstname;
+    private String lastname;
 
     /**
-     * Creates a new instance of indexMB
+     * Creates a new instance of UserMB
      */
-    public indexMB() {
+    public UserMB() {
     }
     
     public String login(){
@@ -34,6 +37,11 @@ public class indexMB {
 
     public String newAccount(){
         return "account.xhtml";
+    }
+    
+    public String create(){
+        
+        return "home.xhtml";
     }
     
     public String getMail() {
@@ -51,5 +59,22 @@ public class indexMB {
     public void setMdp(String mdp) {
         this.mdp = mdp;
     }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+    
     
 }

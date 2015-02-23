@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       
-      >
+          
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <h:outputStylesheet name="dist/css/bootstrap.min.css" />
         <h:outputStylesheet name="dist/css/bootstrap-theme.min.css" />
@@ -34,18 +35,18 @@ and open the template in the editor.
                 <a class="navbar-brand" href="#">Yolo Swag Social NW</a>
               </div>
               <div class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" role="form">
+                <h:form class="navbar-form navbar-right" role="form">
                   <div class="form-group">
-                      <p style="color: white">Nom - Prenom </p>
+                      <p style="color: white">#{UserMB.firstname} - #{UserMB.lastname}</p>
                   </div>
                   <div class="form-group">
-                      <button class="btn"> Amis </button>
+                      <button class="btn" jsf:action="#{HomeMB.friends()}"> Amis </button>
                   </div>
                   <div class="form-group">
                     <input type="text" placeholder="recherche" class="form-control" />
                   </div>
                     <button type="submit" class="btn btn-success">logout <span class="glyphicon glyphicon-log-out"></span></button>
-                </form>
+                </h:form>
               </div><!--/.navbar-collapse -->
             </div>
           </div>
@@ -82,72 +83,68 @@ and open the template in the editor.
                         <button type="submit" class="btn btn-primary">Publier!</button>
                     </div>
                     
-                    <script>
-                        jQuery(document).ready(function($){
-                            $("#dtxt").show();                            
-                            $("#dvid").hide();
-                            $("#dimg").hide();
-                            $("#dlink").hide();
-                            
-                            $("#mtxt").click(function(){
-                                $("#dtxt").show();
-                                $("#dvid").hide();
-                                $("#dimg").hide();
-                                $("#dlink").hide();
-
-                                $("#mtxt").addClass("active");
-                                $("#mvid").removeClass("active");
-                                $("#mimg").removeClass("active");
-                                $("#mlink").removeClass("active");
-                            });
-                            
-                            $("#mvid").click(function(){
-                                $("#dtxt").hide();
-                                $("#dvid").show();
-                                $("#dimg").hide();
-                                $("#dlink").hide();
-                                
-                                $("#mvid").addClass("active");
-                                $("#mtxt").removeClass("active");
-                                $("#mimg").removeClass("active");
-                                $("#mlink").removeClass("active");
-                            });
-                            
-                            $("#mimg").click(function(){
-                                $("#dtxt").hide();
-                                $("#dvid").hide();
-                                $("#dimg").show();
-                                $("#dlink").hide();
-                                
-                                $("#mimg").addClass("active");
-                                $("#mtxt").removeClass("active");
-                                $("#mvid").removeClass("active");
-                                $("#mlink").removeClass("active");
-                            });
-                            
-                            $("#mlink").click(function(){
-                                $("#dtxt").hide();
-                                $("#dvid").hide();
-                                $("#dimg").hide();
-                                $("#dlink").show();
-                                
-                                $("#mimg").removeClass("active");
-                                $("#mtxt").removeClass("active");
-                                $("#mvid").removeClass("active");
-                                $("#mlink").addClass("active");
-                            });
-                            
-                        });
-                    </script>
-                    
-                    
-                    
                 </div>
                 <div class="col-xs-2">
                     
                 </div>
             </div>
         </div>
-        
+        <script>
+            jQuery(document).ready(function($){
+                $("#dtxt").show();                            
+                $("#dvid").hide();
+                $("#dimg").hide();
+                $("#dlink").hide();
+
+                $("#mtxt").click(function(){
+                    $("#dtxt").show();
+                    $("#dvid").hide();
+                    $("#dimg").hide();
+                    $("#dlink").hide();
+
+                    $("#mtxt").addClass("active");
+                    $("#mvid").removeClass("active");
+                    $("#mimg").removeClass("active");
+                    $("#mlink").removeClass("active");
+                });
+
+                $("#mvid").click(function(){
+                    $("#dtxt").hide();
+                    $("#dvid").show();
+                    $("#dimg").hide();
+                    $("#dlink").hide();
+
+                    $("#mvid").addClass("active");
+                    $("#mtxt").removeClass("active");
+                    $("#mimg").removeClass("active");
+                    $("#mlink").removeClass("active");
+                });
+
+                $("#mimg").click(function(){
+                    $("#dtxt").hide();
+                    $("#dvid").hide();
+                    $("#dimg").show();
+                    $("#dlink").hide();
+
+                    $("#mimg").addClass("active");
+                    $("#mtxt").removeClass("active");
+                    $("#mvid").removeClass("active");
+                    $("#mlink").removeClass("active");
+                });
+
+                $("#mlink").click(function(){
+                    $("#dtxt").hide();
+                    $("#dvid").hide();
+                    $("#dimg").hide();
+                    $("#dlink").show();
+
+                    $("#mimg").removeClass("active");
+                    $("#mtxt").removeClass("active");
+                    $("#mvid").removeClass("active");
+                    $("#mlink").addClass("active");
+                });
+
+            });
+        </script>
     </h:body>
 </html>
