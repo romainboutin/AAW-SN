@@ -7,14 +7,18 @@ package managedBeans;
  */
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Moi
  */
 @ManagedBean(name = "indexMB")
-@RequestScoped
+@SessionScoped
 public class indexMB {
+
+    private String mail;
+    private String mdp;
 
     /**
      * Creates a new instance of indexMB
@@ -23,7 +27,26 @@ public class indexMB {
     }
     
     public String login(){
-        return "home.xhtml";
+        if(this.mail.equals("ok"))
+            return "home.xhtml";
+        else 
+            return "index.xhtml";
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
     
 }
