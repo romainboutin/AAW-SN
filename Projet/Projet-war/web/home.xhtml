@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      >
+    <h:head>
+        <h:outputStylesheet name="dist/css/bootstrap.min.css" />
+        <h:outputStylesheet name="dist/css/bootstrap-theme.min.css" />
+        
+        <h:outputScript name="dist/js/bootstrap.min.js"></h:outputScript>
+        <h:outputScript name="jquery-ui-1.11.2.custom/external/jquery/jquery.js"></h:outputScript>
+        <h:outputScript name="jquery-ui-1.11.2.custom/jquery-ui.js"></h:outputScript>
+        
+        
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body  style="background: black">
+         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Yolo Swag Social NW</a>
+              </div>
+              <div class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" role="form">
+                  <div class="form-group">
+                      <p style="color: white">Nom - Prenom </p>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn"> Amis </button>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" placeholder="recherche" class="form-control" />
+                  </div>
+                    <button type="submit" class="btn btn-success">logout <span class="glyphicon glyphicon-log-out"></span></button>
+                </form>
+              </div><!--/.navbar-collapse -->
+            </div>
+          </div>
+        <br></br><br></br><br></br>
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <img src="resources/img/bmw.png" alt="..."  height="100" ></img>
+                    
+                </div>
+                <div class="col-xs-8">
+                    <p>sqmlkvpocvkmedd!f;cùvmlcxvpdosdvklvwjclvkx,cv:</p>
+                    <ul class="nav nav-tabs">
+                        <li id="mtxt" role="presentation" class="active"><a href="#">Statut</a></li>
+                        <li id="mimg" role="presentation"><a href="#">Photo</a></li>
+                        <li id="mvid" role="presentation"><a href="#">Video</a></li>
+                        <li id="mlink" role="presentation"><a href="#">Liens</a></li>
+                    </ul>                    
+                    <div id="dtxt" class="form-group">
+                         <textarea type="text" row="10" class="form-control" placeholder="Statut"/>
+                         <button type="submit" class="btn btn-primary">Publier!</button>
+                    </div>
+                    <div id="dimg" class="form-group">
+                        <input type="text" placeholder="Image" class="form-control" />                        
+                        <button type="submit" class="btn btn-primary">Publier!</button>
+                    </div>
+                    <div id="dvid" class="form-group">
+                        <input type="text" placeholder="Video" class="form-control" />
+                        <button type="submit" class="btn btn-primary">Publier!</button>
+                    </div>
+                    <div id="dlink" class="form-group">
+                        <input type="text" placeholder="Lien" class="form-control" />
+                        <button type="submit" class="btn btn-primary">Publier!</button>
+                    </div>
+                    
+                    <script>
+                        jQuery(document).ready(function($){
+                            $("#dtxt").show();                            
+                            $("#dvid").hide();
+                            $("#dimg").hide();
+                            $("#dlink").hide();
+                            
+                            $("#mtxt").click(function(){
+                                $("#dtxt").show();
+                                $("#dvid").hide();
+                                $("#dimg").hide();
+                                $("#dlink").hide();
+
+                                $("#mtxt").addClass("active");
+                                $("#mvid").removeClass("active");
+                                $("#mimg").removeClass("active");
+                                $("#mlink").removeClass("active");
+                            });
+                            
+                            $("#mvid").click(function(){
+                                $("#dtxt").hide();
+                                $("#dvid").show();
+                                $("#dimg").hide();
+                                $("#dlink").hide();
+                                
+                                $("#mvid").addClass("active");
+                                $("#mtxt").removeClass("active");
+                                $("#mimg").removeClass("active");
+                                $("#mlink").removeClass("active");
+                            });
+                            
+                            $("#mimg").click(function(){
+                                $("#dtxt").hide();
+                                $("#dvid").hide();
+                                $("#dimg").show();
+                                $("#dlink").hide();
+                                
+                                $("#mimg").addClass("active");
+                                $("#mtxt").removeClass("active");
+                                $("#mvid").removeClass("active");
+                                $("#mlink").removeClass("active");
+                            });
+                            
+                            $("#mlink").click(function(){
+                                $("#dtxt").hide();
+                                $("#dvid").hide();
+                                $("#dimg").hide();
+                                $("#dlink").show();
+                                
+                                $("#mimg").removeClass("active");
+                                $("#mtxt").removeClass("active");
+                                $("#mvid").removeClass("active");
+                                $("#mlink").addClass("active");
+                            });
+                            
+                        });
+                    </script>
+                    
+                    
+                    
+                </div>
+                <div class="col-xs-2">
+                    
+                </div>
+            </div>
+        </div>
+        
+    </h:body>
+</html>

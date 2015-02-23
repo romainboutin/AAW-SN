@@ -1,3 +1,5 @@
+package managedBeans;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +12,7 @@ import javax.faces.bean.RequestScoped;
  *
  * @author Moi
  */
-@ManagedBean
+@ManagedBean(name = "indexMB")
 @RequestScoped
 public class indexMB {
 
@@ -18,6 +20,10 @@ public class indexMB {
      * Creates a new instance of indexMB
      */
     public indexMB() {
+    }
+    
+    public String login(){
+        return "home.xhtml";
     }
     
 }
