@@ -6,9 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      
-      >
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <h:outputStylesheet name="dist/css/bootstrap.min.css" />
         <h:outputStylesheet name="dist/css/bootstrap-theme.min.css" />
@@ -25,20 +24,21 @@ and open the template in the editor.
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#">Yolo Swag Social NW</a>
               </div>
               <div class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" role="form">
+                <h:form class="navbar-form navbar-right">
                   <div class="form-group">
                     <input type="text" placeholder="Email" class="form-control" />
                   </div>
                   <div class="form-group">
                     <input type="password" placeholder="Password" class="form-control" />
                   </div>
-                    <button type="submit" class="btn btn-success">Login <span class="glyphicon glyphicon-play-circle"></span></button>
-                </form>
+                    <button jsf:action="#{indexMB.login()}" class="btn btn-success">Login <span class="glyphicon glyphicon-play-circle"></span></button>
+                </h:form>
               </div><!--/.navbar-collapse -->
             </div>
           </div>
+        
     </h:body>
 </html>
