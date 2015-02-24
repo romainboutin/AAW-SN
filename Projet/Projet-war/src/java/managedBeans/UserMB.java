@@ -5,9 +5,11 @@
  */
 package managedBeans;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import services.UserService;
 
 /**
  *
@@ -17,6 +19,9 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class UserMB {
 
+    @EJB 
+    UserService us;
+    
     private String mail;
     private String mdp;
     private String firstname;
@@ -39,8 +44,9 @@ public class UserMB {
         return "account.xhtml";
     }
     
-    public String create(){
+    public String create(){        
         
+        us.newUser(mail, lastname, mail, firstname, lastname);
         return "home.xhtml";
     }
     

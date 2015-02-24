@@ -23,7 +23,7 @@ public class UpdateEntity implements Serializable {
     //========================================================================//
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long _id;
+    private Long id;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
@@ -33,7 +33,7 @@ public class UpdateEntity implements Serializable {
     //== GETTERS AND SETTERS =================================================//
     //========================================================================//
     public Long getId() {
-        return _id;
+        return id;
     }
 
     //========================================================================//
@@ -42,7 +42,7 @@ public class UpdateEntity implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (_id != null ? _id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -53,7 +53,7 @@ public class UpdateEntity implements Serializable {
             return false;
         }
         UpdateEntity other = (UpdateEntity) object;
-        if ((this._id == null && other._id != null) || (this._id != null && !this._id.equals(other._id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -61,7 +61,7 @@ public class UpdateEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.UpdateEntity[ id=" + _id + " ]";
+        return "dao.UpdateEntity[ id=" + id + " ]";
     }
     
 }

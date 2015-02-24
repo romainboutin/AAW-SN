@@ -15,13 +15,13 @@ public enum RelationshipStatusEnum {
     DECLINED(2),
     BLOCKED(3);
     
-    private final int _value;
+    private final int value;
 
     private RelationshipStatusEnum(int value) {
-        _value = value;
+        this.value = value;
     }
 
     public int getValue() {
-        return _value;
+        return value;
     }
 }

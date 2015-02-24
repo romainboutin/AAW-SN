@@ -24,85 +24,87 @@ public class UserEntity implements Serializable {
     //========================================================================//
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long _id;
+    private Long id;
     
     @Column
-    private String _login;
+    private String login;
 
     @Column
-    private String _password;
+    private String password;
     
     @Column
-    private String _mail;
+    private String mail;
 
     @Column
-    private String _firstname;
+    private String firstname;
 
     @Column
-    private String _lastname;
+    private String lastname;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public UserEntity() {
-        _login = null;
-        _password = null;
-        _mail = null;
-        _firstname = null;
-        _lastname = null;
+        login = null;
+        password = null;
+        mail = null;
+        firstname = null;
+        lastname = null;
     }
     
-    public UserEntity(String login, String password, String mail) {
-        _login = login;
-        _password = password;
-        _mail = mail;
+    public UserEntity(String login, String password, String mail, String firstname, String lastname) {
+        login = login;
+        password = password;
+        mail = mail;
+        firstname = firstname;
+        lastname = lastname;        
     }
     
     //========================================================================//
     //== GETTERS AND SETTERS =================================================//
     //========================================================================//
     public Long getId() {
-        return _id;
+        return id;
     }
     
     public String getLogin() {
-        return _login;
+        return login;
     }
     
     public void setLogin(String login) {
-        _login = login;
+        this.login = login;
     }
 
     public String getPassword() {
-        return _password;
+        return password;
     }
 
     public void setPassword(String password) {
-        this._password = password;
+        this.password = password;
     }
     
     public String getMail() {
-        return _mail;
+        return mail;
     }
 
     public void setMail(String mail) {
-        this._mail = mail;
+        this.mail = mail;
     }
 
     public String getFirstname() {
-        return _firstname;
+        return firstname;
     }
 
     public void setFirstname(String firstname) {
-        this._firstname = firstname;
+        this.firstname = firstname;
     }
 
     public String getLastname() {
-        return _lastname;
+        return lastname;
     }
 
     public void setLastname(String lastname) {
-        this._lastname = lastname;
+        this.lastname = lastname;
     }
 
     //========================================================================//
@@ -111,7 +113,7 @@ public class UserEntity implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (_id != null ? _id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -122,7 +124,7 @@ public class UserEntity implements Serializable {
             return false;
         }
         UserEntity other = (UserEntity) object;
-        if ((this._id == null && other._id != null) || (this._id != null && !this._id.equals(other._id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -130,6 +132,6 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.UserEntity[ id=" + _id + " ]";
+        return "dao.UserEntity[ id=" + id + " ]";
     }
 }

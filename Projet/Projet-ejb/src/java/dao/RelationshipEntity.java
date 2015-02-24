@@ -24,67 +24,67 @@ public class RelationshipEntity implements Serializable {
     //========================================================================//
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long _id;
+    private Long id;
     
     @Column
-    private Long _userId1;
+    private Long userId1;
     
     @Column
-    private Long _userId2;
+    private Long userId2;
     
     @Column
-    private RelationshipStatusEnum _relationshipStatusEnum;
+    private RelationshipStatusEnum relationshipStatusEnum;
     
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public RelationshipEntity() {
-        _userId1 = null;
-        _userId2 = null;
-        _relationshipStatusEnum = null;
+        userId1 = null;
+        userId2 = null;
+        relationshipStatusEnum = null;
     }
     
     public RelationshipEntity( Long userId1, Long userId2, RelationshipStatusEnum relationshipStatusEnum ) {
-        _userId1 = userId1;
-        _userId2 = userId2;
-        _relationshipStatusEnum = relationshipStatusEnum;
+        userId1 = userId1;
+        userId2 = userId2;
+        relationshipStatusEnum = relationshipStatusEnum;
     }
     
     public RelationshipEntity( UserEntity user1, UserEntity user2, RelationshipStatusEnum relationshipStatusEnum ) {
-        _userId1 = user1.getId();
-        _userId2 = user2.getId();
-        _relationshipStatusEnum = relationshipStatusEnum;
+        userId1 = user1.getId();
+        userId2 = user2.getId();
+        relationshipStatusEnum = relationshipStatusEnum;
     }
     
     //========================================================================//
     //== GETTERS AND SETTERS =================================================//
     //========================================================================//
     public Long getId() {
-        return _id;
+        return id;
     }
 
     public Long getUserId1() {
-        return _userId1;
+        return userId1;
     }
 
-    public void setUserId1(Long _userId1) {
-        this._userId1 = _userId1;
+    public void setUserId1(Long userId1) {
+        this.userId1 = userId1;
     }
 
     public Long getUserId2() {
-        return _userId2;
+        return userId2;
     }
 
-    public void setUserId2(Long _userId2) {
-        this._userId2 = _userId2;
+    public void setUserId2(Long userId2) {
+        this.userId2 = userId2;
     }
 
     public RelationshipStatusEnum getRelationshipStatusEnum() {
-        return _relationshipStatusEnum;
+        return relationshipStatusEnum;
     }
 
-    public void setRelationshipStatusEnum(RelationshipStatusEnum _relationshipStatusEnum) {
-        this._relationshipStatusEnum = _relationshipStatusEnum;
+    public void setRelationshipStatusEnum(RelationshipStatusEnum relationshipStatusEnum) {
+        this.relationshipStatusEnum = relationshipStatusEnum;
     }
 
     //========================================================================//
@@ -93,7 +93,7 @@ public class RelationshipEntity implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (_id != null ? _id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -104,7 +104,7 @@ public class RelationshipEntity implements Serializable {
             return false;
         }
         RelationshipEntity other = (RelationshipEntity) object;
-        if ((this._id == null && other._id != null) || (this._id != null && !this._id.equals(other._id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -112,7 +112,7 @@ public class RelationshipEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.FriendEntity[ id=" + _id + " ]";
+        return "dao.FriendEntity[ id=" + id + " ]";
     }
     
 }
