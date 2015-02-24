@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.Entity;
+package dao.Entities;
 
 import dao.Utils.RelationshipStatusEnum;
 import java.io.Serializable;
@@ -15,12 +15,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Romain Boutin & William Le Coroller
  */
 @Entity
+@Table(name = "T_RELATIONSHIP")
 public class RelationshipEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     //========================================================================//

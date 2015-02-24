@@ -5,7 +5,7 @@
  */
 package dao.SessionBean;
 
-import dao.Entity.UserEntity;
+import dao.Entities.UserEntity;
 import dao.SessionBeanLocal.UserSessionBeanLocal;
 import java.util.List;
 import java.util.logging.Level;
@@ -66,7 +66,7 @@ public class UserSessionBean implements UserSessionBeanLocal {
     
     @Override
     public UserEntity findByMail(String mail) {
-        Query q = em.createQuery("select u from UserEntity u where u.mail = '"+ mail+"'");
+        Query q = em.createQuery("select u from UserEntity u where u.mail = '"+ mail +"'");
         List <UserEntity> l = q.getResultList();
         Logger.getLogger(UserSessionBean.class.getName()).log(Level.SEVERE, l.toString());
                  

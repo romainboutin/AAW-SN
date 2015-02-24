@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.Entity;
+package dao.Entities;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,13 +15,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Romain Boutin & William Le Coroller
  */
 @Entity
+@Table(name = "T_USER")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     //========================================================================//

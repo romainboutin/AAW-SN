@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.Entity;
+package dao.Entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,6 +19,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,8 +29,9 @@ import javax.persistence.TemporalType;
  * @author Moi
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="messagetype",discriminatorType=DiscriminatorType.STRING)
+@Table(name = "T_MESSAGE")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "messagetype", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Message")
 public class MessageEntity implements Serializable {
     

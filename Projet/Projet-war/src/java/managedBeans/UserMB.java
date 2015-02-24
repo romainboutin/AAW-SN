@@ -7,8 +7,8 @@ package managedBeans;
 
 import Service.BeanLocal.MessageServiceBeanLocal;
 import Service.BeanLocal.UserServiceBeanLocal;
-import dao.Entity.MessageEntity;
-import dao.Entity.UserEntity;
+import dao.Entities.MessageEntity;
+import dao.Entities.UserEntity;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

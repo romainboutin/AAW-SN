@@ -5,8 +5,8 @@
  */
 package Service.BeanLocal;
 
-import dao.Entity.MessageEntity.MsgEnum;
-import dao.Entity.UserEntity;
+import dao.Entities.MessageEntity.MsgEnum;
+import dao.Entities.UserEntity;
 import javax.ejb.Local;
 
 /**

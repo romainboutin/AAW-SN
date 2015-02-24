@@ -6,8 +6,8 @@
 package Service.Bean;
 
 import Service.BeanLocal.RelationshipServiceBeanLocal;
-import dao.Entity.UserEntity;
-import dao.Entity.RelationshipEntity;
+import dao.Entities.UserEntity;
+import dao.Entities.RelationshipEntity;
 import dao.SessionBeanLocal.RelationshipSessionBeanLocal;
 import dao.Utils.RelationshipStatusEnum;
 import java.util.List;

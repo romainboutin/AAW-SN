@@ -5,8 +5,8 @@
  */
 package dao.SessionBean;
 
-import dao.Entity.PublicMessageEntity;
-import dao.Entity.UserEntity;
+import dao.Entities.PublicMessageEntity;
+import dao.Entities.UserEntity;
 import java.util.List;
 import javax.ejb.Local;
 
