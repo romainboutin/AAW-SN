@@ -22,8 +22,7 @@ import javax.faces.bean.SessionScoped;
 public class UserMB {
 
     @EJB
-    UserServiceBeanLocal us;
-    private UserEntity u;
+    UserServiceBeanLocal usbl;
     
     @EJB                 
     MessageServiceBeanLocal msbl;
@@ -45,7 +44,7 @@ public class UserMB {
     }
     
     public String login(){
-        this.user = us.connect(mail,mdp);
+        this.user = usbl.connect(mail,mdp);
         if(user != null){
             this.mail = user.getMail();
             this.firstname = user.getFirstname();
@@ -61,7 +60,7 @@ public class UserMB {
     }
     
     public String create(){    
-        us.newUser(mail, lastname, mail, firstname, lastname);
+        usbl.newUser(mail, lastname, mail, firstname, lastname);
         return "home.xhtml";
     }
     
@@ -122,11 +121,11 @@ public class UserMB {
     }
 
     public UserServiceBeanLocal getUs() {
-        return us;
+        return usbl;
     }
 
     public void setUs(UserServiceBeanLocal usbl) {
-        this.us = usbl;
+        this.usbl = usbl;
     }
 
     public UserEntity getUser() {
