@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -29,13 +30,13 @@ public class RelationshipEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="user_fk1")
-    private UserEntity user1;
+    private UserEntity user;
     
     @OneToOne
     @JoinColumn(name="user_fk2")
-    private UserEntity user2;
+    private UserEntity friend;
     
     @Column
     private RelationshipStatusEnum relationshipStatusEnum;
@@ -44,14 +45,14 @@ public class RelationshipEntity implements Serializable {
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public RelationshipEntity() {
-        this.user1 = null;
-        this.user2 = null;
+        this.user = null;
+        this.friend = null;
         this.relationshipStatusEnum = null;
     }
     
     public RelationshipEntity( UserEntity user1, UserEntity user2, RelationshipStatusEnum relationshipStatusEnum ) {
-        this.user1 = user1;
-        this.user2 = user2;
+        this.user = user1;
+        this.friend = user2;
         this.relationshipStatusEnum = relationshipStatusEnum;
     }
     
@@ -63,19 +64,19 @@ public class RelationshipEntity implements Serializable {
     }
 
     public UserEntity getUserId1() {
-        return user1;
+        return user;
     }
 
     public void setUserId1(UserEntity user1) {
-        this.user1 = user1;
+        this.user = user1;
     }
 
     public UserEntity getUserId2() {
-        return user2;
+        return friend;
     }
 
     public void setUserId2(UserEntity user2) {
-        this.user2 = user2;
+        this.friend = user2;
     }
 
     public RelationshipStatusEnum getRelationshipStatusEnum() {
