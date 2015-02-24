@@ -6,10 +6,11 @@
 package dao.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,25 +52,21 @@ public class UserEntity implements Serializable {
     @OneToMany
     private List<NotificationEntity> notifications;
 
+    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private List<PrivateMessageEntity> privateMsgList;
+    
+    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private List<PublicMessageEntity> publicMsgList;
+    
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public UserEntity() {
-        this.login = "";
-        this.password = "";
-        this.mail = "";
-        this.firstname = "";
-        this.lastname = "";
-        this.relationships = new ArrayList<>();
-    }
-    
-    public UserEntity(String login, String password, String mail) {
-        this.login = login;
-        this.password = password;
-        this.mail = mail;
-        this.firstname = "";
-        this.lastname = "";
-        this.relationships = new ArrayList<>();
+        login = null;
+        password = null;
+        mail = null;
+        firstname = null;
+        lastname = null;
     }
     
     public UserEntity(String login, String password, String mail, String firstname, String lastname) {
@@ -77,8 +74,7 @@ public class UserEntity implements Serializable {
         this.password = password;
         this.mail = mail;
         this.firstname = firstname;
-        this.lastname = lastname;
-        this.relationships = new ArrayList<>();
+        this.lastname = lastname;        
     }
     
     //========================================================================//
@@ -126,22 +122,6 @@ public class UserEntity implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-    
-    public List<RelationshipEntity> getRelationships() {
-        return this.relationships;
-    }
-    
-    public void setRelationship(List<RelationshipEntity> relationships) {
-        this.relationships = relationships;
-    }
-    
-    public boolean addRelationship(RelationshipEntity relationship) {
-        return this.relationships.add(relationship);
-    }
-    
-    public boolean removeRelationship(RelationshipEntity relationship) {
-        return this.relationships.remove(relationship);
     }
 
     //========================================================================//

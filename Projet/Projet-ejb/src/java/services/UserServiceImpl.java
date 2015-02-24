@@ -28,6 +28,18 @@ public class UserServiceImpl implements UserService{
         ud.save(user);
         return true;
     }
+
+    @Override
+    public UserEntity connect(String login, String password) {
+        user = ud.findByMail(login);
+        if(user != null){
+            if(user.getPassword().equals(password))
+                return user;
+            else 
+                return null;
+        }
+        else return null;
+    }
     
   
     

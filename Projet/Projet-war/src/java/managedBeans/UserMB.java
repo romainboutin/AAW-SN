@@ -5,6 +5,7 @@
  */
 package managedBeans;
 
+import dao.entity.UserEntity;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -21,7 +22,7 @@ public class UserMB {
 
     @EJB 
     UserService us;
-    
+    private UserEntity u;
     private String mail;
     private String mdp;
     private String firstname;
@@ -34,8 +35,13 @@ public class UserMB {
     }
     
     public String login(){
-        if(this.mail.equals("ok"))
+        u = us.connect(mail,mdp);
+        if(u != null){
+            this.mail = u.getMail();
+            this.firstname = u.getFirstname();
+            this.lastname = u.getLastname();
             return "home.xhtml";
+        }
         else 
             return "index.xhtml";
     }
@@ -44,10 +50,18 @@ public class UserMB {
         return "account.xhtml";
     }
     
-    public String create(){        
-        
+    public String create(){    
         us.newUser(mail, lastname, mail, firstname, lastname);
         return "home.xhtml";
+    }
+    
+    public String logout(){
+        u = null;
+        mail = "";
+        mdp = "";
+        firstname = "";
+        lastname = "";
+        return "index.xhtml";
     }
     
     public String getMail() {

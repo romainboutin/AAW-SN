@@ -16,5 +16,5 @@ public interface UserDAO {
     public void save(UserEntity u);
     public void update(UserEntity u);
     public void delete(UserEntity u);
-    public List<UserEntity> findName(String name);
+    public UserEntity findByMail(String mail);
 }
