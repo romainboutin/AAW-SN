@@ -5,6 +5,7 @@
  */
 package dao.Entity;
 
+import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -23,5 +24,6 @@ public class PublicMessageEntity extends MessageEntity{
         this.setFrom(from);
         this.setMsg(msg);
         this.setType(type);
+        this.setDate(new Date());
     }
 }
