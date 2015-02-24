@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.entity;
+package dao.Entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -15,6 +15,9 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("PublicMessage")
 public class PublicMessageEntity extends MessageEntity{  
+
+    public PublicMessageEntity() {
+    }
     
     public PublicMessageEntity(UserEntity from, String msg, MsgEnum type){
         this.setFrom(from);

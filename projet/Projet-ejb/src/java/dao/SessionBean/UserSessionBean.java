@@ -6,8 +6,7 @@
 package dao.SessionBean;
 
 import dao.SessionBeanLocal.UserSessionBeanLocal;
-import dao.entity.UserEntity;
-import dao.impl.UserDAOImpl;
+import dao.Entity.UserEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,7 +68,7 @@ public class UserSessionBean implements UserSessionBeanLocal {
     public UserEntity findByMail(String mail) {
        Query q = em.createQuery("select u from UserEntity u where u.mail = '"+ mail+"'");
         List <UserEntity> l = q.getResultList();
-        Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, l.toString());
+        Logger.getLogger(UserSessionBean.class.getName()).log(Level.SEVERE, l.toString());
                  
         if(!l.isEmpty()) {
             return l.get(0);

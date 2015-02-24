@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.impl;
+package dao.SessionBean;
 
-import dao.entity.PublicMessageEntity;
-import dao.entity.UserEntity;
-import dao.interfaces.PublicMessageDAO;
+import dao.Entity.PrivateMessageEntity;
+import dao.Entity.UserEntity;
+import dao.SessionBeanLocal.PrivateMessageSessionBeanLocal;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -15,10 +15,10 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Moi
+ * @author William
  */
 @Stateless
-public class PublicMessageDAOImpl implements PublicMessageDAO{
+public class PrivateMessageSessionBean implements PrivateMessageSessionBeanLocal {
 
     @PersistenceContext(unitName = "Projet-ejbPU")
     private EntityManager em;
@@ -28,23 +28,22 @@ public class PublicMessageDAOImpl implements PublicMessageDAO{
     }
     
     @Override
-    public void save(PublicMessageEntity pm) {        
+    public void save(PrivateMessageEntity pm) {        
         em.persist(pm);
     }
 
     @Override
-    public void update(PublicMessageEntity pm) {
+    public void update(PrivateMessageEntity pm) {
         em.merge(pm);
     }
 
     @Override
-    public void delete(PublicMessageEntity pm) {        
+    public void delete(PrivateMessageEntity pm) {        
         em.remove(em.merge(pm));
     }
 
     @Override
-    public List<PublicMessageEntity> findByUser(UserEntity u) {
+    public List<PrivateMessageEntity> findByDiscus(UserEntity from, UserEntity to) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
 }
