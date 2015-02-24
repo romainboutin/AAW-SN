@@ -6,11 +6,15 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -41,6 +45,12 @@ public class UserEntity implements Serializable {
     @Column
     private String lastname;
 
+    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private List<PrivateMessageEntity> privateMsgList;
+    
+    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private List<PublicMessageEntity> publicMsgList;
+    
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
@@ -53,11 +63,11 @@ public class UserEntity implements Serializable {
     }
     
     public UserEntity(String login, String password, String mail, String firstname, String lastname) {
-        login = login;
-        password = password;
-        mail = mail;
-        firstname = firstname;
-        lastname = lastname;        
+        this.login = login;
+        this.password = password;
+        this.mail = mail;
+        this.firstname = firstname;
+        this.lastname = lastname;        
     }
     
     //========================================================================//

@@ -5,6 +5,7 @@
  */
 package services;
 
+import dao.UserEntity;
 import javax.ejb.Local;
 
 /**
@@ -14,4 +15,5 @@ import javax.ejb.Local;
 @Local
 public interface UserService {    
     public boolean newUser(String login, String password, String mail, String firstname, String lastname);
+    public UserEntity connect(String login, String password);
 }
