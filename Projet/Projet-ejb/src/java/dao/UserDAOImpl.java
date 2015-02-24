@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class UserDAOImpl implements UserDAO{

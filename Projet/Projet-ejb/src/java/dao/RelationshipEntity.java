@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author Romain Boutin & William Le Coroller
  */
 @Entity
-public class UserEntity implements Serializable {
+public class RelationshipEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     //========================================================================//
     //== PROPERTIES ==========================================================//
@@ -27,35 +27,33 @@ public class UserEntity implements Serializable {
     private Long _id;
     
     @Column
-    private String _login;
-
-    @Column
-    private String _password;
+    private Long _userId1;
     
     @Column
-    private String _mail;
-
+    private Long _userId2;
+    
     @Column
-    private String _firstname;
-
-    @Column
-    private String _lastname;
-
+    private RelationshipStatusEnum _relationshipStatusEnum;
+    
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
-    public UserEntity() {
-        _login = null;
-        _password = null;
-        _mail = null;
-        _firstname = null;
-        _lastname = null;
+    public RelationshipEntity() {
+        _userId1 = null;
+        _userId2 = null;
+        _relationshipStatusEnum = null;
     }
     
-    public UserEntity(String login, String password, String mail) {
-        _login = login;
-        _password = password;
-        _mail = mail;
+    public RelationshipEntity( Long userId1, Long userId2, RelationshipStatusEnum relationshipStatusEnum ) {
+        _userId1 = userId1;
+        _userId2 = userId2;
+        _relationshipStatusEnum = relationshipStatusEnum;
+    }
+    
+    public RelationshipEntity( UserEntity user1, UserEntity user2, RelationshipStatusEnum relationshipStatusEnum ) {
+        _userId1 = user1.getId();
+        _userId2 = user2.getId();
+        _relationshipStatusEnum = relationshipStatusEnum;
     }
     
     //========================================================================//
@@ -64,45 +62,29 @@ public class UserEntity implements Serializable {
     public Long getId() {
         return _id;
     }
-    
-    public String getLogin() {
-        return _login;
-    }
-    
-    public void setLogin(String login) {
-        _login = login;
+
+    public Long getUserId1() {
+        return _userId1;
     }
 
-    public String getPassword() {
-        return _password;
+    public void setUserId1(Long _userId1) {
+        this._userId1 = _userId1;
     }
 
-    public void setPassword(String password) {
-        this._password = password;
-    }
-    
-    public String getMail() {
-        return _mail;
+    public Long getUserId2() {
+        return _userId2;
     }
 
-    public void setMail(String mail) {
-        this._mail = mail;
+    public void setUserId2(Long _userId2) {
+        this._userId2 = _userId2;
     }
 
-    public String getFirstname() {
-        return _firstname;
+    public RelationshipStatusEnum getRelationshipStatusEnum() {
+        return _relationshipStatusEnum;
     }
 
-    public void setFirstname(String firstname) {
-        this._firstname = firstname;
-    }
-
-    public String getLastname() {
-        return _lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this._lastname = lastname;
+    public void setRelationshipStatusEnum(RelationshipStatusEnum _relationshipStatusEnum) {
+        this._relationshipStatusEnum = _relationshipStatusEnum;
     }
 
     //========================================================================//
@@ -117,11 +99,11 @@ public class UserEntity implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the _id fields are not set
-        if (!(object instanceof UserEntity)) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof RelationshipEntity)) {
             return false;
         }
-        UserEntity other = (UserEntity) object;
+        RelationshipEntity other = (RelationshipEntity) object;
         if ((this._id == null && other._id != null) || (this._id != null && !this._id.equals(other._id))) {
             return false;
         }
@@ -130,6 +112,7 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.UserEntity[ id=" + _id + " ]";
+        return "dao.FriendEntity[ id=" + _id + " ]";
     }
+    
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 public interface UserDAO {
     public void save(UserEntity u);

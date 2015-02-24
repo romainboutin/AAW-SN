@@ -9,7 +9,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 @Local
 public interface UserService {
