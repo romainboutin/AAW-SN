@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.interfaces;
+package dao.Utils;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
-public enum UpdateTypeEnum {
-    PENDING(0);
+public enum RelationshipStatusEnum {
+    PENDING(0),
+    ACCEPTED(1),
+    DECLINED(2),
+    BLOCKED(3);
     
     private final int _value;
 
-    private UpdateTypeEnum(int value) {
+    private RelationshipStatusEnum(int value) {
         this._value = value;
     }
 

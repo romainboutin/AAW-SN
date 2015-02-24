@@ -6,7 +6,7 @@
 package dao.SessionBean;
 
 import dao.SessionBeanLocal.RelationshipSessionBeanLocal;
-import dao.entity.RelationshipEntity;
+import dao.Entity.RelationshipEntity;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

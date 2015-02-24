@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.interfaces;
+package dao.SessionBeanLocal;
 
-import dao.entity.PrivateMessageEntity;
-import dao.entity.UserEntity;
+import dao.Entity.PrivateMessageEntity;
+import dao.Entity.UserEntity;
 import java.util.List;
+import javax.ejb.Local;
 
 /**
  *
- * @author Moi
+ * @author William
  */
-public interface PrivateMessageDAO {
-    
+@Local
+public interface PrivateMessageSessionBeanLocal {
     public void save(PrivateMessageEntity pm);
     public void update(PrivateMessageEntity pm);
     public void delete(PrivateMessageEntity pm);

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package Service;
 
-import dao.entity.MessageEntity;
-import dao.entity.PublicMessageEntity;
-import dao.entity.UserEntity;
-import dao.interfaces.PublicMessageDAO;
+import dao.Entity.MessageEntity;
+import dao.Entity.PublicMessageEntity;
+import dao.Entity.UserEntity;
+import dao.SessionBean.PublicMessageSessionBeanLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -22,11 +22,11 @@ public class MessageServiceImpl implements MessageService{
     private PublicMessageEntity pm;
     
     @EJB
-    private PublicMessageDAO pmd;
+    private PublicMessageSessionBeanLocal pmsbl;
 
     @Override
     public void PublicMessageText(UserEntity u, String txt, MessageEntity.MsgEnum e) {
        pm =  new PublicMessageEntity(u, txt, e);
-       pmd.save(pm);
+       pmsbl.save(pm);
     }
 }

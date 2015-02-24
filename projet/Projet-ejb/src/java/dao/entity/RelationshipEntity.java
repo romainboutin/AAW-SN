@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.entity;
+package dao.Entity;
 
-import dao.interfaces.RelationshipStatusEnum;
+import dao.Utils.RelationshipStatusEnum;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
