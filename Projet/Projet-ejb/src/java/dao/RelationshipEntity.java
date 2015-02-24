@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -26,11 +28,13 @@ public class RelationshipEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column
-    private Long userId1;
+    @OneToOne
+    @JoinColumn(name="user_fk1")
+    private UserEntity user1;
     
-    @Column
-    private Long userId2;
+    @OneToOne
+    @JoinColumn(name="user_fk2")
+    private UserEntity user2;
     
     @Column
     private RelationshipStatusEnum relationshipStatusEnum;
@@ -39,21 +43,15 @@ public class RelationshipEntity implements Serializable {
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public RelationshipEntity() {
-        userId1 = null;
-        userId2 = null;
-        relationshipStatusEnum = null;
-    }
-    
-    public RelationshipEntity( Long userId1, Long userId2, RelationshipStatusEnum relationshipStatusEnum ) {
-        userId1 = userId1;
-        userId2 = userId2;
-        relationshipStatusEnum = relationshipStatusEnum;
+        this.user1 = null;
+        this.user2 = null;
+        this.relationshipStatusEnum = null;
     }
     
     public RelationshipEntity( UserEntity user1, UserEntity user2, RelationshipStatusEnum relationshipStatusEnum ) {
-        userId1 = user1.getId();
-        userId2 = user2.getId();
-        relationshipStatusEnum = relationshipStatusEnum;
+        this.user1 = user1;
+        this.user2 = user2;
+        this.relationshipStatusEnum = relationshipStatusEnum;
     }
     
     //========================================================================//
@@ -63,20 +61,20 @@ public class RelationshipEntity implements Serializable {
         return id;
     }
 
-    public Long getUserId1() {
-        return userId1;
+    public UserEntity getUserId1() {
+        return user1;
     }
 
-    public void setUserId1(Long userId1) {
-        this.userId1 = userId1;
+    public void setUserId1(UserEntity user1) {
+        this.user1 = user1;
     }
 
-    public Long getUserId2() {
-        return userId2;
+    public UserEntity getUserId2() {
+        return user2;
     }
 
-    public void setUserId2(Long userId2) {
-        this.userId2 = userId2;
+    public void setUserId2(UserEntity user2) {
+        this.user2 = user2;
     }
 
     public RelationshipStatusEnum getRelationshipStatusEnum() {

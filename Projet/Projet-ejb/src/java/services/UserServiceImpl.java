@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean newUser(String login, String password, String mail, String firstname, String lastname) {
-        user = new UserEntity(login,password,mail,firstname,lastname);
+        user = new UserEntity(login, password, mail, firstname, lastname);
         ud.save(user);
         return true;
     }

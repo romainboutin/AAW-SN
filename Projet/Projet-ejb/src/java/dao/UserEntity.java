@@ -6,11 +6,14 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -40,24 +43,38 @@ public class UserEntity implements Serializable {
 
     @Column
     private String lastname;
+    
+    @OneToMany
+    private List<RelationshipEntity> relationships;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public UserEntity() {
-        login = null;
-        password = null;
-        mail = null;
-        firstname = null;
-        lastname = null;
+        this.login = "";
+        this.password = "";
+        this.mail = "";
+        this.firstname = "";
+        this.lastname = "";
+        this.relationships = new ArrayList<>();
+    }
+    
+    public UserEntity(String login, String password, String mail) {
+        this.login = login;
+        this.password = password;
+        this.mail = mail;
+        this.firstname = "";
+        this.lastname = "";
+        this.relationships = new ArrayList<>();
     }
     
     public UserEntity(String login, String password, String mail, String firstname, String lastname) {
-        login = login;
-        password = password;
-        mail = mail;
-        firstname = firstname;
-        lastname = lastname;        
+        this.login = login;
+        this.password = password;
+        this.mail = mail;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.relationships = new ArrayList<>();
     }
     
     //========================================================================//
@@ -105,6 +122,22 @@ public class UserEntity implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+    
+    public List<RelationshipEntity> getRelationships() {
+        return this.relationships;
+    }
+    
+    public void setRelationship(List<RelationshipEntity> relationships) {
+        this.relationships = relationships;
+    }
+    
+    public boolean addRelationship(RelationshipEntity relationship) {
+        return this.relationships.add(relationship);
+    }
+    
+    public boolean removeRelationship(RelationshipEntity relationship) {
+        return this.relationships.remove(relationship);
     }
 
     //========================================================================//
