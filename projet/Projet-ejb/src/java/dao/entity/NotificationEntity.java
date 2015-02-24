@@ -72,5 +72,6 @@ public class NotificationEntity implements Serializable {
     public String toString() {
         return "dao.UpdateEntity[ id=" + id + " ]";
     }
-    
 }
+
+

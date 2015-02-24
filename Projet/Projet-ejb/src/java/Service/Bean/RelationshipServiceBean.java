@@ -52,6 +52,7 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
                 re.setRelationshipStatusEnum(RelationshipStatusEnum.PENDING);
             }
         }
+        rsbl.update(re);
     }
 
     @Override
@@ -62,6 +63,7 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
                 re.setRelationshipStatusEnum(RelationshipStatusEnum.ACCEPTED);
             }
         }
+        rsbl.update(re);
     }
 
     @Override
@@ -72,6 +74,7 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
                 re.setRelationshipStatusEnum(RelationshipStatusEnum.DECLINED);
             }
         }
+        rsbl.update(re);
     }
 
     @Override
@@ -82,6 +85,6 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
                 re.setRelationshipStatusEnum(RelationshipStatusEnum.BLOCKED);
             }
         }
+        rsbl.update(re);
     }
-    
 }
