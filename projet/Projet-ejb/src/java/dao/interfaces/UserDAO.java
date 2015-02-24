@@ -6,7 +6,6 @@
 package dao.interfaces;
 
 import dao.entity.UserEntity;
-import java.util.List;
 
 /**
  *

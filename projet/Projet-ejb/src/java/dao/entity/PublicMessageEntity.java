@@ -5,12 +5,8 @@
  */
 package dao.entity;
 
-import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
@@ -20,4 +16,9 @@ import javax.persistence.Id;
 @DiscriminatorValue("PublicMessage")
 public class PublicMessageEntity extends MessageEntity{  
     
+    public PublicMessageEntity(UserEntity from, String msg, MsgEnum type){
+        this.setFrom(from);
+        this.setMsg(msg);
+        this.setType(type);
+    }
 }

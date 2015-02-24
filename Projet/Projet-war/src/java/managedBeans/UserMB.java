@@ -55,6 +55,11 @@ public class UserMB {
         return "home.xhtml";
     }
     
+    public String addFriends(UserEntity f){
+        //
+        return "";
+    }
+    
     public String logout(){
         u = null;
         mail = "";

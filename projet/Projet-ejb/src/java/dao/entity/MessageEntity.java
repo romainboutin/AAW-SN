@@ -6,6 +6,7 @@
 package dao.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -21,6 +22,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -31,11 +35,13 @@ import javax.persistence.OneToOne;
 @DiscriminatorColumn(name="messagetype",discriminatorType=DiscriminatorType.STRING)
 @DiscriminatorValue("Message")
 public class MessageEntity implements Serializable {
+    
+    public enum MsgEnum {TEXT,VIDEO,LINK,PICTURE };
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     
     @OneToOne
     @JoinColumn(name="user_fk")
@@ -44,12 +50,54 @@ public class MessageEntity implements Serializable {
     @Column
     private String msg;
     
+    @Column
+    private MsgEnum type;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+    
+    public MessageEntity(){
+        
+    }
+      
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public UserEntity getFrom() {
+        return from;
+    }
+
+    public void setFrom(UserEntity from) {
+        this.from = from;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public MsgEnum getType() {
+        return type;
+    }
+
+    public void setType(MsgEnum type) {
+        this.type = type;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
