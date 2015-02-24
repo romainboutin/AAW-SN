@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -46,6 +47,9 @@ public class UserEntity implements Serializable {
     
     @OneToMany
     private List<RelationshipEntity> relationships;
+    
+    @OneToMany
+    private List<NotificationEntity> notifications;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//

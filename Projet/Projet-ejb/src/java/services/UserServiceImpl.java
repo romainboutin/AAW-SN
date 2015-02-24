@@ -5,8 +5,8 @@
  */
 package services;
 
-import dao.UserDAO;
-import dao.UserEntity;
+import dao.interfaces.UserDAO;
+import dao.entity.UserEntity;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
