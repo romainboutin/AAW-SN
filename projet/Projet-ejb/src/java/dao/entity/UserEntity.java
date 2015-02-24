@@ -124,6 +124,38 @@ public class UserEntity implements Serializable {
         this.lastname = lastname;
     }
 
+    public List<RelationshipEntity> getRelationships() {
+        return relationships;
+    }
+
+    public void setRelationships(List<RelationshipEntity> relationships) {
+        this.relationships = relationships;
+    }
+
+    public List<NotificationEntity> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<NotificationEntity> notifications) {
+        this.notifications = notifications;
+    }
+
+    public List<PrivateMessageEntity> getPrivateMsgList() {
+        return privateMsgList;
+    }
+
+    public void setPrivateMsgList(List<PrivateMessageEntity> privateMsgList) {
+        this.privateMsgList = privateMsgList;
+    }
+
+    public List<PublicMessageEntity> getPublicMsgList() {
+        return publicMsgList;
+    }
+
+    public void setPublicMsgList(List<PublicMessageEntity> publicMsgList) {
+        this.publicMsgList = publicMsgList;
+    }
+
     //========================================================================//
     //== CLASS METHODS =======================================================//
     //========================================================================//

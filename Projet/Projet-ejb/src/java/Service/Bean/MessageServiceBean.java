@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package Service.Bean;
 
+import Service.BeanLocal.MessageServiceBeanLocal;
 import dao.Entity.MessageEntity;
 import dao.Entity.PublicMessageEntity;
 import dao.Entity.UserEntity;
@@ -17,7 +18,7 @@ import javax.ejb.Stateless;
  * @author Moi
  */
 @Stateless
-public class MessageServiceImpl implements MessageService{
+public class MessageServiceBean implements MessageServiceBeanLocal{
     
     private PublicMessageEntity pm;
     

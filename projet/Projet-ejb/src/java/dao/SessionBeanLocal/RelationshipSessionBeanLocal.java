@@ -6,6 +6,7 @@
 package dao.SessionBeanLocal;
 
 import dao.Entity.RelationshipEntity;
+import dao.Entity.UserEntity;
 import javax.ejb.Local;
 
 /**
@@ -17,4 +18,6 @@ public interface RelationshipSessionBeanLocal {
     public void save(RelationshipEntity r);
     public void update(RelationshipEntity r);
     public void delete(RelationshipEntity r);
+    
+    public RelationshipEntity find(UserEntity user, UserEntity friend);
 }

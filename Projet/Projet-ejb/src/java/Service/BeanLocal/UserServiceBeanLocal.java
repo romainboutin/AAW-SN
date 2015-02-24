@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package Service.BeanLocal;
 
 import dao.Entity.UserEntity;
 import javax.ejb.Local;
@@ -13,7 +13,7 @@ import javax.ejb.Local;
  * @author Romain Boutin & William Le Coroller
  */
 @Local
-public interface UserService {    
+public interface UserServiceBeanLocal {    
     public boolean newUser(String login, String password, String mail, String firstname, String lastname);
     public UserEntity connect(String login, String password);
 }

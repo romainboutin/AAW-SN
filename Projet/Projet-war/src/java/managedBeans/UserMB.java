@@ -10,7 +10,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import Service.UserService;
+import Service.BeanLocal.UserServiceBeanLocal;
 
 /**
  *
@@ -21,7 +21,7 @@ import Service.UserService;
 public class UserMB {
 
     @EJB 
-    UserService us;
+    UserServiceBeanLocal us;
     private UserEntity u;
     private String mail;
     private String mdp;

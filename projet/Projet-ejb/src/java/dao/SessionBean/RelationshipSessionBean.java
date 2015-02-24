@@ -7,6 +7,8 @@ package dao.SessionBean;
 
 import dao.SessionBeanLocal.RelationshipSessionBeanLocal;
 import dao.Entity.RelationshipEntity;
+import dao.Entity.UserEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -58,5 +60,16 @@ public class RelationshipSessionBean implements RelationshipSessionBeanLocal {
     public void delete(RelationshipEntity r) {
         r = em.merge(r);
         em.remove(r);
+    }
+
+    @Override
+    public RelationshipEntity find(UserEntity user, UserEntity friend) {
+        List<RelationshipEntity> listRelationship = user.getRelationships();
+        for(RelationshipEntity re : listRelationship) {
+            if(re.getUserId2().equals(friend)) {
+                return re;
+            }
+        }
+        return null;
     }
 }
