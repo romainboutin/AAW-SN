@@ -5,8 +5,8 @@
  */
 package dao.SessionBeanLocal;
 
-import dao.Entities.RelationshipEntity;
-import dao.Entities.UserEntity;
+import dao.Entity.RelationshipEntity;
+import dao.Entity.UserEntity;
 import javax.ejb.Local;
 
 /**

@@ -5,7 +5,7 @@
  */
 package Service.BeanLocal;
 
-import dao.Entities.UserEntity;
+import dao.Entity.UserEntity;
 import javax.ejb.Local;
 
 /**

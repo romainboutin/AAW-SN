@@ -6,9 +6,9 @@
 package Service.Bean;
 
 import Service.BeanLocal.MessageServiceBeanLocal;
-import dao.Entities.MessageEntity;
-import dao.Entities.PublicMessageEntity;
-import dao.Entities.UserEntity;
+import dao.Entity.MessageEntity;
+import dao.Entity.PublicMessageEntity;
+import dao.Entity.UserEntity;
 import dao.SessionBean.PublicMessageSessionBeanLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

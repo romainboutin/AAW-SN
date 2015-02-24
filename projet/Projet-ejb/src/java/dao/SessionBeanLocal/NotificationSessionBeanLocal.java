@@ -5,7 +5,7 @@
  */
 package dao.SessionBeanLocal;
 
-import dao.Entities.NotificationEntity;
+import dao.Entity.NotificationEntity;
 import javax.ejb.Local;
 
 /**

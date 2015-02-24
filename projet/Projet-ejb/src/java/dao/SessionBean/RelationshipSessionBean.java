@@ -6,8 +6,8 @@
 package dao.SessionBean;
 
 import dao.SessionBeanLocal.RelationshipSessionBeanLocal;
-import dao.Entities.RelationshipEntity;
-import dao.Entities.UserEntity;
+import dao.Entity.RelationshipEntity;
+import dao.Entity.UserEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

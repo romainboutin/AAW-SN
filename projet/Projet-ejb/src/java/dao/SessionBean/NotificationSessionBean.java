@@ -5,7 +5,7 @@
  */
 package dao.SessionBean;
 
-import dao.Entities.NotificationEntity;
+import dao.Entity.NotificationEntity;
 import dao.SessionBeanLocal.NotificationSessionBeanLocal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

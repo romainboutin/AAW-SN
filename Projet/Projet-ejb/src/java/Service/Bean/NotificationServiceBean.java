@@ -6,9 +6,9 @@
 package Service.Bean;
 
 import Service.BeanLocal.NotificationServiceBeanLocal;
-import dao.Entities.MessageEntity;
-import dao.Entities.NotificationEntity;
-import dao.Entities.UserEntity;
+import dao.Entity.MessageEntity;
+import dao.Entity.NotificationEntity;
+import dao.Entity.UserEntity;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

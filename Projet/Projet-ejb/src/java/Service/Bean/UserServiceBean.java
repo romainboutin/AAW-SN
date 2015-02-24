@@ -6,7 +6,7 @@
 package Service.Bean;
 
 import Service.BeanLocal.UserServiceBeanLocal;
-import dao.Entities.UserEntity;
+import dao.Entity.UserEntity;
 import dao.SessionBeanLocal.UserSessionBeanLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

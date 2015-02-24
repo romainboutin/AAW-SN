@@ -5,7 +5,7 @@
  */
 package dao.SessionBean;
 
-import dao.Entities.UserEntity;
+import dao.Entity.UserEntity;
 import dao.SessionBeanLocal.UserSessionBeanLocal;
 import java.util.List;
 import java.util.logging.Level;
