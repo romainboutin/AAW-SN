@@ -65,24 +65,26 @@ and open the template in the editor.
                         <li id="mimg" role="presentation"><a href="#">Photo</a></li>
                         <li id="mvid" role="presentation"><a href="#">Video</a></li>
                         <li id="mlink" role="presentation"><a href="#">Liens</a></li>
-                    </ul>                    
+                    </ul>  
+                    <h:form>
                     <div id="dtxt" class="form-group">
-                         <textarea type="text" row="10" class="form-control" placeholder="Statut"/>
-                         <button type="submit" class="btn btn-primary">Publier!</button>
+                         <textarea jsf:value="#{UserMB.text}" type="text" row="10" class="form-control" placeholder="Statut"/>
+                         <button jsf:action="#{UserMB.postText()}" class="btn btn-primary">Publier !</button>
                     </div>
                     <div id="dimg" class="form-group">
                         <input type="text" placeholder="Image" class="form-control" />                        
-                        <button type="submit" class="btn btn-primary">Publier!</button>
+                        <button class="btn btn-primary">Publier!</button>
                     </div>
                     <div id="dvid" class="form-group">
                         <input type="text" placeholder="Video" class="form-control" />
-                        <button type="submit" class="btn btn-primary">Publier!</button>
+                        <button  class="btn btn-primary">Publier!</button>
                     </div>
                     <div id="dlink" class="form-group">
                         <input type="text" placeholder="Lien" class="form-control" />
-                        <button type="submit" class="btn btn-primary">Publier!</button>
+                        <button class="btn btn-primary">Publier!</button>
                     </div>
-                    
+                    </h:form>
+
                 </div>
                 <div class="col-xs-2">
                     

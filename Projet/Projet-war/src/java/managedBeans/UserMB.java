@@ -5,11 +5,13 @@
  */
 package managedBeans;
 
+import dao.entity.MessageEntity;
 import dao.entity.UserEntity;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import services.MessageService;
 import services.UserService;
 
 /**
@@ -22,11 +24,19 @@ public class UserMB {
 
     @EJB 
     UserService us;
-    private UserEntity u;
+    
+    @EJB                 
+    MessageService ms;
+    
+      
+    private UserEntity user;
     private String mail;
     private String mdp;
     private String firstname;
     private String lastname;
+    
+    //message
+    private String text;  
 
     /**
      * Creates a new instance of UserMB
@@ -35,11 +45,11 @@ public class UserMB {
     }
     
     public String login(){
-        u = us.connect(mail,mdp);
-        if(u != null){
-            this.mail = u.getMail();
-            this.firstname = u.getFirstname();
-            this.lastname = u.getLastname();
+        this.user = us.connect(mail,mdp);
+        if(user != null){
+            this.mail = user.getMail();
+            this.firstname = user.getFirstname();
+            this.lastname = user.getLastname();
             return "home.xhtml";
         }
         else 
@@ -61,13 +71,23 @@ public class UserMB {
     }
     
     public String logout(){
-        u = null;
+        user = null;
         mail = "";
         mdp = "";
         firstname = "";
         lastname = "";
         return "index.xhtml";
     }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+        
+    public String postText(){        
+        ms.PublicMessageText(this.user, this.text, MessageEntity.MsgEnum.TEXT);
+        return "home.xhtml";
+    }
+    
+    
     
     public String getMail() {
         return mail;
@@ -100,6 +120,39 @@ public class UserMB {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+    public UserService getUs() {
+        return us;
+    }
+
+    public void setUs(UserService us) {
+        this.us = us;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public MessageService getMs() {
+        return ms;
+    }
+
+    public void setMs(MessageService ms) {
+        this.ms = ms;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    
     
     
 }

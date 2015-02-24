@@ -5,6 +5,7 @@
  */
 package dao.entity;
 
+import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -16,9 +17,14 @@ import javax.persistence.Entity;
 @DiscriminatorValue("PublicMessage")
 public class PublicMessageEntity extends MessageEntity{  
     
+    public PublicMessageEntity(){
+        
+    }
+    
     public PublicMessageEntity(UserEntity from, String msg, MsgEnum type){
         this.setFrom(from);
         this.setMsg(msg);
         this.setType(type);
+        this.setDate(new Date());
     }
 }

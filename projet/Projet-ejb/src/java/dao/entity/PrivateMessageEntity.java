@@ -20,5 +20,8 @@ import javax.persistence.Id;
 @DiscriminatorValue("PrivateMessage")
 public class PrivateMessageEntity extends MessageEntity{
   
+    public PrivateMessageEntity(){
+        
+    }
     
 }

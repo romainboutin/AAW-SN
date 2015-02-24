@@ -8,8 +8,6 @@ package dao.impl;
 import dao.interfaces.UserDAO;
 import dao.entity.UserEntity;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -48,7 +46,6 @@ public class UserDAOImpl implements UserDAO{
     public UserEntity findByMail(String mail) {
        Query q = em.createQuery("select u from UserEntity u where u.mail = '"+ mail+"'");
         List <UserEntity> l = q.getResultList();
-        Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, l.toString());
                  
         if(!l.isEmpty())
             return l.get(0);
