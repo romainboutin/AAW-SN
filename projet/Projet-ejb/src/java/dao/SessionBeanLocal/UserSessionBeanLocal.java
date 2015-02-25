@@ -7,6 +7,7 @@ package dao.SessionBeanLocal;
 
 import dao.Entity.RelationshipEntity;
 import dao.Entity.UserEntity;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -20,4 +21,5 @@ public interface UserSessionBeanLocal {
     public void delete(UserEntity u);
     
     public UserEntity findByMail(String mail);
+    public List<UserEntity> findAll();
 }

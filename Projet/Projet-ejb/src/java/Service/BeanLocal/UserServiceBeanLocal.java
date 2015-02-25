@@ -6,6 +6,7 @@
 package Service.BeanLocal;
 
 import dao.Entity.UserEntity;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -17,4 +18,6 @@ public interface UserServiceBeanLocal {
     public boolean newUser(String login, String password, String mail, String firstname, String lastname);
     public UserEntity connect(String login, String password);
     public UserEntity reload(String login);
+    public List<UserEntity> find(String str);
+    public List<UserEntity> findMyFriend(UserEntity u);
 }

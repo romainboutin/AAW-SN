@@ -68,12 +68,18 @@ public class UserSessionBean implements UserSessionBeanLocal {
     public UserEntity findByMail(String mail) {
         Query q = em.createQuery("select u from UserEntity u where u.mail = '"+ mail +"'");
         List <UserEntity> l = q.getResultList();
-        Logger.getLogger(UserSessionBean.class.getName()).log(Level.SEVERE, l.toString());
                  
         if(!l.isEmpty()) {
             return l.get(0);
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<UserEntity> findAll() {
+        Query q = em.createQuery("select u from UserEntity u ");
+        List <UserEntity> l = q.getResultList();
+        return l;
     }
 }

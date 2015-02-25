@@ -6,6 +6,7 @@
 package managedBeans;
 
 import Service.BeanLocal.MessageServiceBeanLocal;
+import Service.BeanLocal.RelationshipServiceBeanLocal;
 import Service.BeanLocal.UserServiceBeanLocal;
 import dao.Entity.MessageEntity;
 import dao.Entity.PublicMessageEntity;
@@ -30,12 +31,18 @@ public class UserMB {
     @EJB                 
     MessageServiceBeanLocal msbl;
     
+    @EJB                 
+    RelationshipServiceBeanLocal rsbl;
+    
     private List<PublicMessageEntity> publicMessages;
+    private List<UserEntity> search;
     private UserEntity user;
     private String mail;
     private String mdp;
     private String firstname;
     private String lastname;
+    
+    private String searchtext;
     
     //message
     private String text;  
@@ -84,12 +91,13 @@ public class UserMB {
     }
       
     public String find(){
-        return "friends.xhtml";
+        this.search = usbl.find(searchtext);
+        return "find.xhtml";
     }
         
     public String addFriends(UserEntity f){
-        //
-        return "";
+        rsbl.addFriend(user, f);
+        return "home.xhtml";
     }
     
     public String logout(){
@@ -216,6 +224,22 @@ public class UserMB {
 
     public void setLinkText(String linkText) {
         this.linkText = linkText;
+    }
+
+    public List<UserEntity> getSearch() {
+        return search;
+    }
+
+    public void setSearch(List<UserEntity> search) {
+        this.search = search;
+    }
+
+    public String getSearchtext() {
+        return searchtext;
+    }
+
+    public void setSearchtext(String searchtext) {
+        this.searchtext = searchtext;
     }
 
     
