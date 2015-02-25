@@ -56,7 +56,7 @@ public class UserServiceBean implements UserServiceBeanLocal{
             return user;
         else return null;
     }
-
+    
     @Override
     public List<UserEntity> find(String str) {
          users = usbl.findAll();
@@ -76,6 +76,6 @@ public class UserServiceBean implements UserServiceBeanLocal{
         return null;
     }
     
-  
-    
 }
+
+

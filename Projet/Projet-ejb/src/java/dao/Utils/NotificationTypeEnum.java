@@ -9,12 +9,14 @@ package dao.Utils;
  *
  * @author William
  */
-public enum UpdateTypeEnum {
-    PENDING(0);
+public enum NotificationTypeEnum {
+    FRIEND_REQUEST(0),
+    FRIEND_MESSAGE(1),
+    FRIEND_QUOTE(2);
     
     private final int _value;
 
-    private UpdateTypeEnum(int value) {
+    private NotificationTypeEnum(int value) {
         this._value = value;
     }
 

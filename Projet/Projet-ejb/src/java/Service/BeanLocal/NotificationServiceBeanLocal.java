@@ -5,9 +5,9 @@
  */
 package Service.BeanLocal;
 
-import dao.Entity.MessageEntity;
 import dao.Entity.NotificationEntity;
 import dao.Entity.UserEntity;
+import dao.Utils.NotificationTypeEnum;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,6 +17,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface NotificationServiceBeanLocal {
-    public void addNotification(UserEntity user, MessageEntity msg);
+    public void addNotification(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText);
     public List<NotificationEntity> getAllNotification(UserEntity user);
 }

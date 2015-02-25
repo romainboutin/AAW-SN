@@ -5,13 +5,16 @@
  */
 package dao.Entity;
 
+import dao.Utils.NotificationTypeEnum;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,12 +35,32 @@ public class NotificationEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_fk")
     private UserEntity user;
+    
+    @OneToOne
+    @JoinColumn(name = "friend_user_fk")
+    private UserEntity friend;
+    
+    @Column
+    private NotificationTypeEnum notifType;
+    
+    @Column
+    private String notifText;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public NotificationEntity() {
-        
+        this.user = null;
+        this.friend = null;
+        this.notifType = null;
+        this.notifText = "";
+    }
+    
+    public NotificationEntity(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText) {
+        this.user = user;
+        this.friend = friend;
+        this.notifType = notifType;
+        this.notifText = notifText;
     }
     
     //========================================================================//
@@ -45,6 +68,38 @@ public class NotificationEntity implements Serializable {
     //========================================================================//
     public Long getId() {
         return id;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public UserEntity getFriend() {
+        return friend;
+    }
+
+    public void setFriend(UserEntity friend) {
+        this.friend = friend;
+    }
+
+    public NotificationTypeEnum getNotifType() {
+        return notifType;
+    }
+
+    public void setNotifType(NotificationTypeEnum notifType) {
+        this.notifType = notifType;
+    }
+
+    public String getNotifText() {
+        return notifText;
+    }
+
+    public void setNotifText(String notifText) {
+        this.notifText = notifText;
     }
 
     //========================================================================//

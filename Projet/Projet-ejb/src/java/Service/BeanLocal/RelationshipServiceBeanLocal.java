@@ -5,8 +5,10 @@
  */
 package Service.BeanLocal;
 
+import dao.Entity.RelationshipEntity;
 import dao.Entity.UserEntity;
 import dao.Utils.RelationshipStatusEnum;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -21,4 +23,6 @@ public interface RelationshipServiceBeanLocal {
     public void setRelationAccepted(UserEntity user, UserEntity friend);
     public void setRelationDeclined(UserEntity user, UserEntity friend);
     public void setRelationBlocked(UserEntity user, UserEntity friend);
+    public List<RelationshipEntity> getAllRelationship(UserEntity user);
+    public List<UserEntity> getAllFriends(UserEntity user);
 }
