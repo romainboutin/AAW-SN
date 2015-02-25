@@ -1,3 +1,10 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Choix techniques \046 documentations}{}% 2
-\BOOKMARK [1][-]{section.3}{Conclusion}{}% 3
+\BOOKMARK [1][-]{section.2}{Contexte}{}% 2
+\BOOKMARK [1][-]{section.3}{Choix techniques}{}% 3
+\BOOKMARK [1][-]{section.4}{Conception}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Mod\350le base de donn\351es}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Diagramme de classe}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Couche DAO}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Couche Service}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.5}{Couche Pr\351sentation}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 10

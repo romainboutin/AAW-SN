@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.10.15)  25 FEB 2015 21:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.10.15)  25 FEB 2015 23:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,7 +639,7 @@ Package color Info: Driver file: pdftex.def on input line 130.
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 25.
 
-No file report.aux.
+(./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
@@ -657,7 +657,7 @@ LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Try loading font information for T1+lmr on input line 47.
-(/usr/local/texlive/2013/texmf-dist/tex/latex/lm/t1lmr.fd
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 *geometry* driver: auto-detecting
@@ -740,6 +740,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 47.
 LaTeX Info: Redefining \pageref on input line 47.
 LaTeX Info: Redefining \nameref on input line 47.
+
+(./report.out) (./report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
@@ -783,7 +785,15 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 59.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./repo
+rt.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 6.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 6.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 6.
+)
 \tf@toc=\write4
 \openout4 = `report.toc'.
 
@@ -803,59 +813,165 @@ l.71 \clearpage
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
 
  []
 
 [1
 
 
-]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 117.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 117.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 117.
- [2
+] [2
 
 ] [3
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 191.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
+Underfull \hbox (badness 10000) in paragraph at lines 153--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--171
+
+ []
+
+[4
+
+] <img/Class_Diagram_Entity.png, id=83, 759.58781pt x 852.93657pt>
+File: img/Class_Diagram_Entity.png Graphic file (type png)
+
+<use img/Class_Diagram_Entity.png>
+Package pdftex.def Info: img/Class_Diagram_Entity.png used on input line 186.
+(pdftex.def)             Requested size: 369.88582pt x 415.35265pt.
+ [5
+
+ <./img/Class_Diagram_Entity.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 205--209
+
+ []
+
+
+Overfull \hbox (3.56985pt too wide) in paragraph at lines 211--212
+[]\T1/lmr/bx/n/12 MessageEntity\T1/lmr/m/n/12 , \T1/lmr/bx/n/12 Pu-blic-Mes-sa-
+geEn-tity \T1/lmr/m/n/12 et \T1/lmr/bx/n/12 Pri-va-te-Mes-sa-geEn-tity \T1/lmr/
+m/n/12 : Ces
+ []
+
+
+Overfull \hbox (16.0169pt too wide) in paragraph at lines 212--213
+[]\T1/lmr/bx/n/12 NotificationEntity \T1/lmr/m/n/12 : Cette classe re-pré-sente
+ la table ^^S T_NOTIFICATION ^^T. 
+ []
+
+
+Overfull \hbox (20.75447pt too wide) in paragraph at lines 213--214
+[]\T1/lmr/bx/n/12 RelationshipEntity \T1/lmr/m/n/12 : Cette classe re-pré-sente
+ la table ^^S T_RELATIONSHIP ^^T. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--227
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--227
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--227
+
+ []
+
+[6
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 239--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
+
+ []
+
+[7
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 275--281
+
+ []
+
+[8
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 293.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 293.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 191.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
-
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D30F79D0DCED8FE9A3B65FFFDF9218AB;163.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 191.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 293.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: AB4539E5F265996C23AA07E9D7E10B5F;570.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 293.
  ) 
 Here is how much of TeX's memory you used:
- 9627 strings out of 493315
- 137825 string characters out of 6137903
- 233825 words of memory out of 5000000
- 12905 multiletter control sequences out of 15000+600000
- 53057 words of font info for 55 fonts, out of 8000000 for 9000
+ 9668 strings out of 493315
+ 138371 string characters out of 6137903
+ 232908 words of memory out of 5000000
+ 12922 multiletter control sequences out of 15000+600000
+ 55858 words of font info for 56 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  34i,11n,43p,253b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/
 texlive/2013/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/20
-13/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2013/texmf-di
-st/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
-pe1/public/lm/lmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/l
-m/lmro12.pfb>
-Output written on report.pdf (5 pages, 127216 bytes).
+13/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/
+type1/public/lm/lmr17.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/publi
+c/lm/lmro12.pfb>
+Output written on report.pdf (10 pages, 253891 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 130 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

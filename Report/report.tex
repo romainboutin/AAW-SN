@@ -87,17 +87,14 @@ Réseau social en Java J2EE.}
 Le but de ce projet est la réalisation d'un réseau social en utilisant les technologies
 Java J2EE.\\
 
-Le rapport est organisé en quatres parties principales :
+Le rapport est organisé en trois parties principales :
 \begin{itemize}
-\item La partie \begin{bf}contexte\end{bf} qui présente les notions et définition
-de la théorie des graphes ainsi que ce qui est attendu ainsi que les contraintes.
-\item La partie \begin{bf}théorie\end{bf} qui explicite les deux algorithmes de 
-calcul des composantes fortement connexes et qui les compare très succintement.
-\item La partie \begin{bf}technique \& documentation\end{bf} qui présente 
-les choix techniques qui ont été effectué et fait le lien avec la documentation.
-\item La partie \begin{bf}résultats\end{bf} qui présente 
-les résultats des brefs tests de performances effectué sur les deux algorithmes
-implémentés.
+\item La partie \begin{bf}contexte\end{bf} qui présente les points que le projet doit respecter.
+
+\item La partie \begin{bf}technique\end{bf} qui présente les choix techniques qui ont été effectués.
+
+\item La partie \begin{bf}conception\end{bf} qui présente la conception des différentes couches
+de l'application.
 \end{itemize}
 
 
@@ -110,47 +107,18 @@ implémentés.
 
 
 
-\section{Choix techniques \& documentations}
-La documentation du projet est extrait des commentaires du code source puis 
-formatté par doxygen pour le rendre plus lisible. Il est disponible dans le 
-document PDF \LaTeX ci-joint (document \og{}refman.pdf\fg{}). Il est également disponible 
-sous un format web HTML \og{}/doc/doxygen/html/index.html\fg{}.
-
-Durant l'implémentation de ce projet, plusieurs choix techniques ont été fait. 
-Nous tentons ici des les présenter et de les justifier lorsque cela est nécéssaire.
-
-Le premier choix qui a été fait fut d'\begin{bf}utiliser le langage C/C++\end{bf}. 
-En effet, le Java aurait certainement été plus simple et plus rapide d'utilisation. 
-Néanmoins en utilisant le C/C++ on avait déjà une bibliothèque de gestion des graphes toutes 
-faites nous permettant un gain de temps substancielle.
-
-Le second choix qui a été fait est de donner la possibilité à l'utilisateur de 
-\begin{bf}sauvegarder le graphe généré aléatoirement dans un fichier de description\end{bf} afin 
-de pouvoir le re-entrer pour re-tester le graphe généré à plusieurs reprises.
-En effet, n'ayant pas implémenter la fonctionnalité d'input demandé, on a 
-voulu donner à l'utilisateur la possibilité de re-tester le graphe généré.
-
-Le troisième choix qui a été fait est d'\begin{bf}utiliser des \og{}vector\fg{}\end{bf} de la bibliothèque 
-standard C/C++ afin de représenter les arêtes du graphe sous la forme d'une liste
-d'adjacence plutôt qu'une classe liste modifiée. Dans un premier temps, nous 
-avions réalisé une classe implémentant la structure de donnée d'une liste 
-chainée en utilisant des templates. 
-Le soucis majeur de cette implémentation est qu'une telle structure ne 
-pouvaient être détruite facilement dès lors qu'on lui passait une classe 
-en type patron.
-N'ayant pas trouvé de solution \begin{bf}simple\end{bf}, nous avons décider de
-nous en remettre à quelque chose de plus sûr. Les fichiers implémentant cette 
-classe sont présent dans le dossier \og{}/src/\fg{} bien que non répertorié par 
-doxygen.
-
-Enfin, le quatrième et dernier choix est vis à vis de l'implémentation des algorithmes. 
-\begin{bf}On a choisi d'implémenter les deux algorithmes\end{bf} majeurs afin de pouvoir 
-les comparer de façon grossière par curiosité. Les tests et résultats sont 
-présentés dans la partie suivante.
-
-On a, par ailleurs, vérifié en utilisant des outils externes tel que 
-\begin{bf}gdb\end{bf} ou \begin{bf}valgrind\end{bf} 
-qu'il n'y ai pas de fuite mémoire.
+\section{Contexte}
+Le but de ce projet est de concevoir et implanter un réseau social simplifié.\\
+Les contraintes suivantes nous ont été imposées :
+\begin{itemize}
+\item Chaque utilisateur est enregistré en base de données.
+\item Chaque utilisateur dispose d'une liste d'amis qui lui est associé.
+\item Chaque utilisateur pourra partager des fichiers avec ses amis.
+\item Chaque liste d'amis des utilisateurs est enregistré en base de données.
+\item Chaque utilisateur a la possibilité d'échanger des messages avec ses amis.
+\item Chaque utilisateur a la possibilité d'identifier ses amis dans ses publications.
+\item Dès lors il sera notifié d'une telle identification.
+\end{itemize}
 
 
 
@@ -162,8 +130,136 @@ qu'il n'y ai pas de fuite mémoire.
 
 
 
-\section{Résultats}
+\section{Choix techniques}
+Nous avons choisi d'utiliser comme technologies la combinaison des Enterprise JavaBeans (EJB)
+et JavaServer Faces (JSF). En effet, ces technologies nous ont parut plus intuitive et solide 
+que leurs homologues JPA et Spring. L'utilisation redondante de JavaBeans étant indéniablement 
+un atout en terme d'évolutivité et de maintenabilité.
 
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\section{Conception}
+
+\subsection{Modèle base de données}
+
+\textbf{Table T\_USER}\\
+Cette table décrit l'ensemble des informations des utilisateurs inscrit sur le 
+réseau social.\\
+\newline
+
+\textbf{Table T\_RELATIONSHIP}\\
+Cette table décrit l'ensemble des informations permettant d'établir une relation 
+d'amitié entre deux utilisateurs inscrit sur le réseau social.\\
+\newline
+
+\textbf{Table T\_NOTIFICATION}\\
+Cette table recense l'ensemble des notifications des différents utilisateurs du réseau 
+social.\\
+\newline
+
+\textbf{Table T\_MESSAGE}\\
+Cette table regroupe l'ensemble des messages publiques et privés échangés par les 
+utilisateurs du réseau social.\\
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\subsection{Diagramme de classe}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=13cm]{img/Class_Diagram_Entity.png}
+	\caption{Le diagramme de classe associé au package \og{}entity\fg{}}
+\end{figure}
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\subsection{Couche DAO}
+La couche DAO effectue l'interfaçage entre la base de données et la couche service/métier.
+Elle fourni au travers des entités et des Entreprise JavaBeans une modélisation des données 
+stockées dans la base de données.
+
+\textbf{Package Entity}\\
+Les classes présentes dans ce package sont les classes \og{}entités\fg{}. Ces classes 
+donnent un cadre uniforme pour l'accès aux données en réalisant un mapping des différentes
+tables présentent en base de données.\\
+
+\begin{itemize}
+\item \textbf{MessageEntity}, \textbf{PublicMessageEntity} et \textbf{PrivateMessageEntity} : Ces classes représentent la table \og{}T\_MESSAGE\fg{}.
+\item \textbf{NotificationEntity} : Cette classe représente la table \og{}T\_NOTIFICATION\fg{}.
+\item \textbf{RelationshipEntity} : Cette classe représente la table \og{}T\_RELATIONSHIP\fg{}.
+\item \textbf{UserEntity} : Cette classe représente la table \og{}T\_USER\fg{}.\\
+\end{itemize}
+
+\textbf{Package SessionBeanLocal et SessionBean}\\
+Les classes présentes dans ce package sont les interface local des Beans de session 
+propre à EJB.\\
+\newline
+L'ensemble des classes de ce package présente une interface assez similaire avec 
+la déclaration des méthodes \og{}save\fg{}, \og{}update\fg{} et \og{}delete\fg{} 
+permettant respectivement de sauvegarder ou créer, de mettre à jour ou de détruire 
+une entité et de répercuter ce changement en base de données à l'aide d'un objet 
+\og{}EntityManger\fg{}.\\
+\newline
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\subsection{Couche Service}
+Aussi appelé \og{}couche métier\fg{}, elle fait le lien entre la couche présentation et la couche DAO.
+Avec EJB, cette couche se résume à l'implémentation de JavaBeans dit de service fournissant donc des 
+méthodes de plus haut niveau afin de traité les requêtes utilisateurs plus simplement.
+\newline
+
+\textbf{Package BeanLocal et Bean}\\
+L'implémentation a été effectué de telle sorte que pour chaque fonctionnalité est associé 
+le service correspondant. On voit bien ici la force des EJB.
+\newline
+
+\subsection{Couche Présentation}
+Il s'agit de la couche la plus proche de l'utilisateur. C'est elle qui présente à l'utilisateur 
+l'ensemble des actions, via des pages web, qu'il peut effectuer.
+\newline
+
+\textbf{Package ManagedBeans}\\
+Pour un soucis de gestion de session il a été décidé de créer un managedBean plus important.
+Les autres managedBeans représentent des fonctionnalités indépendantes de l'utilisateurs.
+\newline
+
+\textbf{Gestion des messages}\\
+On a choisi par simplicité d'imposer à l'utilisateur de poster des vidéos ou des photos 
+via des liens de fichiers déjà uploadé. On applique juste un traitement sur les différents 
+liens pour les afficher correctement.
 
 
 
@@ -176,19 +272,13 @@ qu'il n'y ai pas de fuite mémoire.
 
 
 \section{Conclusion}
-Du point de vue des résultats, il apparaît que l'algorithme de Tarjan semble 
-plus rapide que l'algorithme de Kosaraju-Sharir.
+La quasi-totalité des fonctionnalitées attendues ont été implémentées à l'exception 
+de l'identification d'un amis dans un message.\\
+Le réseau social est fonctionnel bien qu'austère. Il respecte l'ensemble des directives 
+d'implémentation des technologies J2EE traitées en cours.\\
+On regrette néanmoins de ne pas avoir pu rajouté des fonctionnalités de confort ainsi 
+que de vérification afin de rendre l'expérience utilisateur plus ergonomique et intuitive.\\
 
-On regrette de ne pas avoir implémenter une \og{}vraie\fg{} liste ou 
-une \og{}vraie\fg{} pile ceci bien que la structure vector fonctionne très bien 
-(probablement beaucoup mieux que n'importe quel liste ou pile de mon cru).
-
-On regrette également de ne pas avoir davantage étoffé les tests effectué. 
-On aurait pu leur donner un semblant d'approche scientifique.
-
-On est néanmoins satisfait d'avoir implémenté les deux algorithmes principaux 
-de calcul de composantes fortement connexes d'un graphe orienté et d'avoir 
-mis en place un système simple afin de comparer grossièrement leurs performances.
 
 
 
