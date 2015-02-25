@@ -39,7 +39,7 @@ public class NotificationServiceBean implements NotificationServiceBeanLocal {
 
     @Override
     public void setNotificationRead(NotificationEntity notification) {
-        notification.setRead(true);
+        notification.setIsRead(true);
     }
 }
 

@@ -6,6 +6,7 @@
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="eclipselink.target-database" value="Derby"/>
     </properties>
   </persistence-unit>
 </persistence>
