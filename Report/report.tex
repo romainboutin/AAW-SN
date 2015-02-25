@@ -1,0 +1,203 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+% enlever twoside pour la version pdf
+\usepackage[a4paper,hmarginratio=2:2]{geometry}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{epsfig}
+\usepackage{wrapfig}
+\usepackage{thmbox} % theorem box (joli theoreme)
+% \usepackage{amsthm} % theorem
+\usepackage{setspace} % theorem interline
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{alltt}
+\usepackage[backref=page,plainpages = false]{hyperref}
+\usepackage{parskip}
+\usepackage{verbatim}
+\usepackage{listings}
+%\usepackage{marvosym}
+\usepackage{fancyhdr}
+\usepackage{color}
+
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+
+% define custom color
+\definecolor{red75}{rgb}{0.75,0,0}
+\definecolor{blue50}{rgb}{0,0,0.5}
+
+% theorem list
+% \newtheorem{mydef}{Definition}
+
+\renewcommand{\labelitemi}{\textbullet}
+\setlength{\parindent}{0cm} % pas d'alinéa
+
+
+
+
+
+\title{Rapport du projet d'AAW :\\ 
+Réseau social en Java J2EE.}
+\author{William Le Coroller \& Romain Boutin}
+\date{Mercredi 25 Février 2015}
+
+\begin{document}
+\pagenumbering{Roman}
+
+
+
+% - - - - - - - début de la page de garde - - - - - - - - - - - - - - - - - - -
+
+
+
+\thispagestyle{empty}
+
+\maketitle
+
+\clearpage{\pagestyle{empty}}
+
+
+
+% - - - - - - - fin de la page de garde - - - - - - - - - - - - - - - - - - - -
+
+
+
+\clearpage{\pagestyle{empty}}
+
+\tableofcontents
+\clearpage{\pagestyle{empty}}
+
+\pagenumbering{arabic}
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\section{Introduction}
+
+Le but de ce projet est la réalisation d'un réseau social en utilisant les technologies
+Java J2EE.\\
+
+Le rapport est organisé en quatres parties principales :
+\begin{itemize}
+\item La partie \begin{bf}contexte\end{bf} qui présente les notions et définition
+de la théorie des graphes ainsi que ce qui est attendu ainsi que les contraintes.
+\item La partie \begin{bf}théorie\end{bf} qui explicite les deux algorithmes de 
+calcul des composantes fortement connexes et qui les compare très succintement.
+\item La partie \begin{bf}technique \& documentation\end{bf} qui présente 
+les choix techniques qui ont été effectué et fait le lien avec la documentation.
+\item La partie \begin{bf}résultats\end{bf} qui présente 
+les résultats des brefs tests de performances effectué sur les deux algorithmes
+implémentés.
+\end{itemize}
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\section{Choix techniques \& documentations}
+La documentation du projet est extrait des commentaires du code source puis 
+formatté par doxygen pour le rendre plus lisible. Il est disponible dans le 
+document PDF \LaTeX ci-joint (document \og{}refman.pdf\fg{}). Il est également disponible 
+sous un format web HTML \og{}/doc/doxygen/html/index.html\fg{}.
+
+Durant l'implémentation de ce projet, plusieurs choix techniques ont été fait. 
+Nous tentons ici des les présenter et de les justifier lorsque cela est nécéssaire.
+
+Le premier choix qui a été fait fut d'\begin{bf}utiliser le langage C/C++\end{bf}. 
+En effet, le Java aurait certainement été plus simple et plus rapide d'utilisation. 
+Néanmoins en utilisant le C/C++ on avait déjà une bibliothèque de gestion des graphes toutes 
+faites nous permettant un gain de temps substancielle.
+
+Le second choix qui a été fait est de donner la possibilité à l'utilisateur de 
+\begin{bf}sauvegarder le graphe généré aléatoirement dans un fichier de description\end{bf} afin 
+de pouvoir le re-entrer pour re-tester le graphe généré à plusieurs reprises.
+En effet, n'ayant pas implémenter la fonctionnalité d'input demandé, on a 
+voulu donner à l'utilisateur la possibilité de re-tester le graphe généré.
+
+Le troisième choix qui a été fait est d'\begin{bf}utiliser des \og{}vector\fg{}\end{bf} de la bibliothèque 
+standard C/C++ afin de représenter les arêtes du graphe sous la forme d'une liste
+d'adjacence plutôt qu'une classe liste modifiée. Dans un premier temps, nous 
+avions réalisé une classe implémentant la structure de donnée d'une liste 
+chainée en utilisant des templates. 
+Le soucis majeur de cette implémentation est qu'une telle structure ne 
+pouvaient être détruite facilement dès lors qu'on lui passait une classe 
+en type patron.
+N'ayant pas trouvé de solution \begin{bf}simple\end{bf}, nous avons décider de
+nous en remettre à quelque chose de plus sûr. Les fichiers implémentant cette 
+classe sont présent dans le dossier \og{}/src/\fg{} bien que non répertorié par 
+doxygen.
+
+Enfin, le quatrième et dernier choix est vis à vis de l'implémentation des algorithmes. 
+\begin{bf}On a choisi d'implémenter les deux algorithmes\end{bf} majeurs afin de pouvoir 
+les comparer de façon grossière par curiosité. Les tests et résultats sont 
+présentés dans la partie suivante.
+
+On a, par ailleurs, vérifié en utilisant des outils externes tel que 
+\begin{bf}gdb\end{bf} ou \begin{bf}valgrind\end{bf} 
+qu'il n'y ai pas de fuite mémoire.
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\section{Résultats}
+
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\section{Conclusion}
+Du point de vue des résultats, il apparaît que l'algorithme de Tarjan semble 
+plus rapide que l'algorithme de Kosaraju-Sharir.
+
+On regrette de ne pas avoir implémenter une \og{}vraie\fg{} liste ou 
+une \og{}vraie\fg{} pile ceci bien que la structure vector fonctionne très bien 
+(probablement beaucoup mieux que n'importe quel liste ou pile de mon cru).
+
+On regrette également de ne pas avoir davantage étoffé les tests effectué. 
+On aurait pu leur donner un semblant d'approche scientifique.
+
+On est néanmoins satisfait d'avoir implémenté les deux algorithmes principaux 
+de calcul de composantes fortement connexes d'un graphe orienté et d'avoir 
+mis en place un système simple afin de comparer grossièrement leurs performances.
+
+
+
+% ========== nouvelle page ====================================================
+
+
+
+\clearpage{\pagestyle{empty}}
+
+
+
+\end{document}
