@@ -6,7 +6,9 @@
 package dao.SessionBean;
 
 import dao.Entity.NotificationEntity;
+import dao.Entity.UserEntity;
 import dao.SessionBeanLocal.NotificationSessionBeanLocal;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +16,7 @@ import javax.persistence.PersistenceContextType;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class NotificationSessionBean implements NotificationSessionBeanLocal {
@@ -58,5 +60,10 @@ public class NotificationSessionBean implements NotificationSessionBeanLocal {
     public void delete(NotificationEntity n) {
         n = em.merge(n);
         em.remove(n);
+    }
+
+    @Override
+    public List<NotificationEntity> findNotif(UserEntity u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

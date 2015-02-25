@@ -17,7 +17,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
@@ -63,7 +63,8 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
 
     @Override
     public void setRelationAccepted(UserEntity user, UserEntity friend) {
-        List<RelationshipEntity> listRelationship = user.getRelationships();
+        List<RelationshipEntity> listRelationship = rsbl.findAll();
+        
         for(RelationshipEntity re : listRelationship) {
             if(re.getUserId2().equals(friend) && re.getUserId1().equals(user) || re.getUserId1().equals(friend) && re.getUserId2().equals(user)) {
                 re.setRelationshipStatusEnum(RelationshipStatusEnum.ACCEPTED);

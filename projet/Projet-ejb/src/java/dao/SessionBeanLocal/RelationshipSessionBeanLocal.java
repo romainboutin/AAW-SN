@@ -7,11 +7,12 @@ package dao.SessionBeanLocal;
 
 import dao.Entity.RelationshipEntity;
 import dao.Entity.UserEntity;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Local
 public interface RelationshipSessionBeanLocal {
@@ -20,4 +21,5 @@ public interface RelationshipSessionBeanLocal {
     public void delete(RelationshipEntity r);
     
     public RelationshipEntity find(UserEntity user, UserEntity friend);
+    public List<RelationshipEntity> findAll();
 }

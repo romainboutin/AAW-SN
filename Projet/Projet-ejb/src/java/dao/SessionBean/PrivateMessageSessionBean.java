@@ -16,7 +16,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class PrivateMessageSessionBean implements PrivateMessageSessionBeanLocal {

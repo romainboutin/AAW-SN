@@ -7,7 +7,7 @@ package dao.Utils;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 public enum NotificationTypeEnum {
     FRIEND_REQUEST(0),

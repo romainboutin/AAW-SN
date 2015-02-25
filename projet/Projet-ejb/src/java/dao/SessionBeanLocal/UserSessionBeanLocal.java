@@ -12,7 +12,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Local
 public interface UserSessionBeanLocal {

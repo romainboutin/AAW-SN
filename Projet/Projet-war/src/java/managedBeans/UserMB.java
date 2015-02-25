@@ -6,12 +6,15 @@
 package managedBeans;
 
 import Service.BeanLocal.MessageServiceBeanLocal;
+import Service.BeanLocal.NotificationServiceBeanLocal;
 import Service.BeanLocal.RelationshipServiceBeanLocal;
 import Service.BeanLocal.UserServiceBeanLocal;
 import dao.Entity.MessageEntity;
+import dao.Entity.NotificationEntity;
+import dao.Entity.PrivateMessageEntity;
 import dao.Entity.PublicMessageEntity;
 import dao.Entity.UserEntity;
-import java.util.ArrayList;
+import dao.Utils.NotificationTypeEnum;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -34,9 +37,14 @@ public class UserMB {
     @EJB                 
     RelationshipServiceBeanLocal rsbl;
     
+    @EJB                 
+    NotificationServiceBeanLocal nsbl;
+    
     private List<PublicMessageEntity> publicMessages;
+    private List<PrivateMessageEntity> privateMessages;
     private List<UserEntity> search;
     private List<UserEntity> friends;
+    private List<NotificationEntity> notifications;
     
     private UserEntity user;
     private UserEntity friend;
@@ -48,6 +56,7 @@ public class UserMB {
     private String searchtext;
     
     //message
+    private String pmtext; 
     private String text;  
     private String videoText;  
     private String imgText;   
@@ -64,6 +73,8 @@ public class UserMB {
            
         if(user != null){
             this.publicMessages = usbl.getWall(user);
+            this.notifications = this.user.getNotifications();
+            this.friends = rsbl.getAllFriends(user);
             this.mail = user.getMail();
             this.firstname = user.getFirstname();
             this.lastname = user.getLastname();
@@ -79,6 +90,18 @@ public class UserMB {
         this.publicMessages = usbl.getWall(user);
     }
 
+    public void updatePM(){
+         this.user = usbl.reload(mail);
+         this.friend = usbl.reload(this.friend.getMail());
+         this.privateMessages =  msbl.getPM(this.user,this.friend);
+    }
+    
+    public String home(){
+        this.friend = null;
+        
+        return "home.xhtml";
+    }
+    
     public String newAccount(){
         return "account.xhtml";
     }
@@ -89,7 +112,6 @@ public class UserMB {
     }
     
     public String friends(){
-        this.friends = rsbl.getAllFriends(user);
         return "friends.xhtml";
     }
       
@@ -100,26 +122,35 @@ public class UserMB {
         
     public String addFriends(UserEntity f){
         rsbl.addFriend(user, f);
+        nsbl.addNotification(user, f, NotificationTypeEnum.FRIEND_REQUEST, "amis?");
         return "home.xhtml";
+    }
+    public String acceptFriends(NotificationEntity n){
+        nsbl.setNotificationRead(n);
+        rsbl.setRelationAccepted(user, n.getUser());
+        return "home.xhtml"; 
     }
     
     public String pm(UserEntity f){
         this.friend = f;
+        this.privateMessages = msbl.getPM(this.user,this.friend);
         return "privatemessage.xhtml";
     }
     
     public String postPmText(){               
-        msbl.PrivateMessage(this.user,this.friend,this.text, MessageEntity.MsgEnum.TEXT);
-        this.text="";
+        msbl.PrivateMessage(this.user,this.friend,this.pmtext, MessageEntity.MsgEnum.TEXT);
+        this.pmtext="";
         return "privatemessage.xhtml";
     }
     
     public String logout(){
         user = null;
+        friend = null;
         mail = "";
         mdp = "";
         firstname = "";
         lastname = "";
+        
         return "index.xhtml";
     }
     
@@ -150,8 +181,23 @@ public class UserMB {
         return "home.xhtml";
     }
     
+    public NotificationServiceBeanLocal getNsbl() {
+        return nsbl;
+    }
+
+    public void setNsbl(NotificationServiceBeanLocal nsbl) {
+        this.nsbl = nsbl;
+    }
+
+    public List<NotificationEntity> getNotifications() {
+        return notifications;
+    }
+
     //////////////////////////////////////////////////////////////////////////////
-    
+    public void setNotifications(List<NotificationEntity> notifications) {    
+        this.notifications = notifications;
+    }
+
     public String getMail() {
         return mail;
     }
@@ -280,6 +326,14 @@ public class UserMB {
         this.friends = friends;
     }
 
+    public List<PrivateMessageEntity> getPrivateMessages() {
+        return privateMessages;
+    }
+
+    public void setPrivateMessages(List<PrivateMessageEntity> privateMessages) {
+        this.privateMessages = privateMessages;
+    }
+
     
     public UserServiceBeanLocal getUsbl() {
         return usbl;
@@ -303,6 +357,14 @@ public class UserMB {
 
     public void setPublicMessages(List<PublicMessageEntity> publicMessages) {
         this.publicMessages = publicMessages;
+    }
+
+    public String getPmtext() {
+        return pmtext;
+    }
+
+    public void setPmtext(String pmtext) {
+        this.pmtext = pmtext;
     }
     
     

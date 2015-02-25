@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class PublicMessageSessionBean implements PublicMessageSessionBeanLocal {

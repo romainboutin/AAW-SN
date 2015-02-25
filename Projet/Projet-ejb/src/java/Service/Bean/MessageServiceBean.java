@@ -12,12 +12,15 @@ import dao.Entity.PublicMessageEntity;
 import dao.Entity.UserEntity;
 import dao.SessionBeanLocal.PrivateMessageSessionBeanLocal;
 import dao.SessionBeanLocal.PublicMessageSessionBeanLocal;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class MessageServiceBean implements MessageServiceBeanLocal{
@@ -42,5 +45,18 @@ public class MessageServiceBean implements MessageServiceBeanLocal{
         pvm = new PrivateMessageEntity(from, to, txt, e);
         pvmsbl.save(pvm);
     }
+
+    @Override
+    public List<PrivateMessageEntity> getPM(UserEntity from, UserEntity to) {
+        List<PrivateMessageEntity> pm = pvmsbl.findByDiscus(from, to);
+        Collections.sort(pm, new Comparator<PrivateMessageEntity>(){ 
+            @Override public int compare(PrivateMessageEntity o1, PrivateMessageEntity o2) { 
+                return -(o1.getDate().compareTo(o2.getDate())); 
+            } 
+        });
+        
+        return pm;
+    }
+    
     
 }

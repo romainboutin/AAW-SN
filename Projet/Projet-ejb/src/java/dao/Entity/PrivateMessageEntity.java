@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 @Entity
 @DiscriminatorValue("PrivateMessage")

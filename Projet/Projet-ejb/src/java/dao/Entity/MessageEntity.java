@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 @Entity
 @Table(name = "T_MESSAGE")

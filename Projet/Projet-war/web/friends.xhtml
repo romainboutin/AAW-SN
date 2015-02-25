@@ -19,7 +19,7 @@ and open the template in the editor.
         <h:outputScript name="jquery-ui-1.11.2.custom/external/jquery/jquery.js"></h:outputScript>
         <h:outputScript name="jquery-ui-1.11.2.custom/jquery-ui.js"></h:outputScript>
         
-        <title>TODO supply a title</title>
+        <title>snw Friends</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body  style="background: black">
@@ -32,7 +32,9 @@ and open the template in the editor.
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Yolo Swag Social NW</a>
+                <h:form>
+                    <a class="navbar-brand" jsf:action="#{UserMB.home()}">Yolo Swag Social NW</a>
+                </h:form>
               </div>
               <div class="navbar-collapse collapse">
                 <h:form class="navbar-form navbar-right" role="form">

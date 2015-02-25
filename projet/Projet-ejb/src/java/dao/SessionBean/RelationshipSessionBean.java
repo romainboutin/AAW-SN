@@ -13,10 +13,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class RelationshipSessionBean implements RelationshipSessionBeanLocal {
@@ -72,4 +73,9 @@ public class RelationshipSessionBean implements RelationshipSessionBeanLocal {
         }*/
         return null;
     }
+
+    @Override
+    public List<RelationshipEntity> findAll() {
+        Query q = em.createQuery("SELECT r FROM RelationshipEntity r");
+        return q.getResultList();}
 }

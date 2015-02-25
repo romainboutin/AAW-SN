@@ -16,7 +16,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author William
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class NotificationServiceBean implements NotificationServiceBeanLocal {
@@ -39,7 +39,8 @@ public class NotificationServiceBean implements NotificationServiceBeanLocal {
 
     @Override
     public void setNotificationRead(NotificationEntity notification) {
-        notification.setIsRead(true);
+        notification.setIsRead("1");
+        nsbl.update(notification);
     }
 }
 

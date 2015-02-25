@@ -53,7 +53,7 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<RelationshipEntity> relationships;
     
-    @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="friend", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<NotificationEntity> notifications;
 
     @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)

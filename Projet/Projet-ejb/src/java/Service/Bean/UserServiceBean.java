@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author Moi
+ * @author Romain Boutin & William Le Coroller
  */
 @Stateless
 public class UserServiceBean implements UserServiceBeanLocal{

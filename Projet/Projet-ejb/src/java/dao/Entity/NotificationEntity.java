@@ -39,7 +39,7 @@ public class NotificationEntity implements Serializable {
     private String notifText;
     
     @Column
-    private Boolean isRead;
+    private String isRead;
     
     @ManyToOne
     @JoinColumn(name = "notif_user_fk1")
@@ -55,7 +55,7 @@ public class NotificationEntity implements Serializable {
     public NotificationEntity() {
         this.notifType = null;
         this.notifText = "";
-        this.isRead = false;
+        this.isRead = "0";
         this.user = null;
         this.friend = null;
     }
@@ -63,7 +63,7 @@ public class NotificationEntity implements Serializable {
     public NotificationEntity(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText) {
         this.notifType = notifType;
         this.notifText = notifText;
-        this.isRead = false;
+        this.isRead = "0";
         this.user = user;
         this.friend = friend;
     }
@@ -107,11 +107,11 @@ public class NotificationEntity implements Serializable {
         this.notifText = notifText;
     }
 
-    public Boolean isRead() {
+    public String getIsRead() {
         return isRead;
     }
 
-    public void setIsRead(Boolean isRead) {
+    public void setIsRead(String isRead) {
         this.isRead = isRead;
     }
 

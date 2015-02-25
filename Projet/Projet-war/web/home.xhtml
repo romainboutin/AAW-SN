@@ -22,7 +22,7 @@ and open the template in the editor.
         <h:outputScript name="jquery-ui-1.11.2.custom/jquery-ui.js"></h:outputScript>
         
         
-        <title>TODO supply a title</title>
+        <title>snw Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body  style="background: black">
@@ -41,9 +41,6 @@ and open the template in the editor.
                 <h:form class="navbar-form navbar-right" role="form">
                   <div class="form-group">
                       <p style="color: white">#{UserMB.firstname} - #{UserMB.lastname}</p>
-                  </div>
-                  <div class="form-group">
-                      <button class="btn" jsf:action="#{UserMB.friends()}"> Amis </button>
                   </div>
                   <div class="form-group">
                     <input type="text" jsf:value="#{UserMB.searchtext}" placeholder="recherche" class="form-control" />
@@ -75,7 +72,8 @@ and open the template in the editor.
                         <li id="mlink" role="presentation"><a href="#">Liens</a></li>
                     </ul>  
                     <h:form>
-                    <div id="dtxt" class="form-group">
+                    <div id="dtxt" class="form-group">                    
+                        
                          <textarea jsf:value="#{UserMB.text}" type="text" row="10" class="form-control" placeholder="Statut"/>
                          <button jsf:action="#{UserMB.postText()}" class="btn btn-primary">Publier !</button>
                     </div>
@@ -113,7 +111,17 @@ and open the template in the editor.
                     
                 </div>
                 <div class="col-xs-2">
-                    
+                    <h:form>
+                        <ui:repeat value="#{UserMB.notifications}" var="notif">
+                            <div>
+                                <h:form rendered="#{notif.isRead == '0'}">
+                                    <p>notif by: #{notif.user.firstname} #{notif.user.lastname} -- #{notif.notifText}</p>
+                                    <button jsf:action="#{UserMB.acceptFriends(notif)}" class="btn">Acepter!</button>                    
+                                </h:form>
+                                <hr />
+                            </div>
+                        </ui:repeat>
+                    </h:form>
                 </div>
             </div>
         </div>
