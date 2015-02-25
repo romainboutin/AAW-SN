@@ -6,6 +6,8 @@
 package dao.Entity;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -150,6 +152,12 @@ public class UserEntity implements Serializable {
     }
 
     public List<PublicMessageEntity> getPublicMsgList() {
+        
+        Collections.sort(publicMsgList, new Comparator<PublicMessageEntity>(){ 
+            @Override public int compare(PublicMessageEntity o1, PublicMessageEntity o2) { 
+                return -(o1.getDate().compareTo(o2.getDate())); 
+            } 
+        });
         return publicMsgList;
     }
 

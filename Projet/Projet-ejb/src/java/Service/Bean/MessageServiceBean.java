@@ -26,7 +26,7 @@ public class MessageServiceBean implements MessageServiceBeanLocal{
     private PublicMessageSessionBeanLocal pmsbl;
 
     @Override
-    public void PublicMessageText(UserEntity u, String txt, MessageEntity.MsgEnum e) {
+    public void PublicMessage(UserEntity u, String txt, MessageEntity.MsgEnum e) {
        pm =  new PublicMessageEntity(u, txt, e);
        pmsbl.save(pm);
     }

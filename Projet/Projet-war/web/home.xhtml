@@ -9,7 +9,9 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       
           
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <h:outputStylesheet name="dist/css/bootstrap.min.css" />
         <h:outputStylesheet name="dist/css/bootstrap-theme.min.css" />
@@ -59,7 +61,6 @@ and open the template in the editor.
                     
                 </div>
                 <div class="col-xs-8">
-                    <p>sqmlkvpocvkmedd!f;cùvmlcxvpdosdvklvwjclvkx,cv:</p>
                     <ul class="nav nav-tabs">
                         <li id="mtxt" role="presentation" class="active"><a href="#">Statut</a></li>
                         <li id="mimg" role="presentation"><a href="#">Photo</a></li>
@@ -72,19 +73,37 @@ and open the template in the editor.
                          <button jsf:action="#{UserMB.postText()}" class="btn btn-primary">Publier !</button>
                     </div>
                     <div id="dimg" class="form-group">
-                        <input type="text" placeholder="Image" class="form-control" />                        
-                        <button class="btn btn-primary">Publier!</button>
+                        <input type="text" jsf:value="#{UserMB.imgText}" placeholder="Image" class="form-control" />                        
+                        <button jsf:action="#{UserMB.postImg()}" class="btn btn-primary">Publier!</button>
                     </div>
                     <div id="dvid" class="form-group">
-                        <input type="text" placeholder="Video" class="form-control" />
-                        <button  class="btn btn-primary">Publier!</button>
+                        <input type="text" jsf:value="#{UserMB.videoText}" placeholder="Video" class="form-control" />
+                        <button jsf:action="#{UserMB.postVideo()}" class="btn btn-primary">Publier!</button>
                     </div>
                     <div id="dlink" class="form-group">
-                        <input type="text" placeholder="Lien" class="form-control" />
-                        <button class="btn btn-primary">Publier!</button>
+                        <input type="text" jsf:value="#{UserMB.linkText}" placeholder="Lien" class="form-control" />
+                        <button jsf:action="#{UserMB.postLink()}" class="btn btn-primary">Publier!</button>
                     </div>
                     </h:form>
 
+                    <h:form>
+                        <ui:repeat value="#{UserMB.publicMessages}" var="message">
+                            <div>
+                                <p>posted by: #{message.from.firstname} #{message.from.lastname}</p>
+                                <h:outputText value="#{message.msg}" rendered="#{message.type == 'TEXT'}" />
+                                
+                                <h:graphicImage height="300" value="#{message.msg}" rendered="#{message.type == 'PICTURE'}" />
+                                                                
+                                <h:outputLink value="#{message.msg}" rendered="#{message.type == 'LINK'}" > #{message.msg} </h:outputLink>
+                                
+                                <h:form rendered="#{message.type == 'VIDEO'}">
+                                    <iframe width="420" height="315" src="#{message.msg}"></iframe>
+                                </h:form>
+                                <hr />
+                            </div>
+                        </ui:repeat>
+                    </h:form>
+                    
                 </div>
                 <div class="col-xs-2">
                     
