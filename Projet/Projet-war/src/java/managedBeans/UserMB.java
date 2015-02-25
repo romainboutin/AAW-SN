@@ -39,6 +39,7 @@ public class UserMB {
     private List<UserEntity> friends;
     
     private UserEntity user;
+    private UserEntity friend;
     private String mail;
     private String mdp;
     private String firstname;
@@ -103,6 +104,13 @@ public class UserMB {
     }
     
     public String pm(UserEntity f){
+        this.friend = f;
+        return "privatemessage.xhtml";
+    }
+    
+    public String postPmText(){               
+        msbl.PrivateMessage(this.user,this.friend,this.text, MessageEntity.MsgEnum.TEXT);
+        this.text="";
         return "privatemessage.xhtml";
     }
     
@@ -254,6 +262,14 @@ public class UserMB {
 
     public void setRsbl(RelationshipServiceBeanLocal rsbl) {
         this.rsbl = rsbl;
+    }
+
+    public UserEntity getFriend() {
+        return friend;
+    }
+
+    public void setFriend(UserEntity friend) {
+        this.friend = friend;
     }
 
     public List<UserEntity> getFriends() {

@@ -16,4 +16,5 @@ import javax.ejb.Local;
 @Local
 public interface MessageServiceBeanLocal {
     public void PublicMessage(UserEntity u, String txt, MsgEnum e);
+    public void PrivateMessage(UserEntity from, UserEntity to, String txt, MsgEnum e);
 }

@@ -59,9 +59,11 @@ and open the template in the editor.
                 <div class="col-xs-4">
                 </div>
                 <div class="col-xs-4">
-                    
-                    
-                    
+                    <h1>Ptivate message to: #{UserMB.friend.firstname}  #{UserMB.friend.lastname} h1>
+                    <h:form>
+                        <textarea jsf:value="#{UserMB.text}" type="text" row="10" class="form-control" placeholder="Statut"/>
+                        <button jsf:action="#{UserMB.postPmText()}" class="btn btn-primary">pm !</button>
+                    </h:form>                    
                 </div>
                 <div class="col-xs-4">
                 </div>

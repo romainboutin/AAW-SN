@@ -12,6 +12,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -44,6 +45,7 @@ public class PrivateMessageSessionBean implements PrivateMessageSessionBeanLocal
 
     @Override
     public List<PrivateMessageEntity> findByDiscus(UserEntity from, UserEntity to) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query q = em.createQuery("SELECT pm FROM PrivateMessageEntity pm WHERE (pm.from.id="+from.getId() + " AND pm.to.id=" +to.getId()+") OR (pm.from.id="+to.getId() + " AND pm.to.id=" +from.getId()+")" );
+        return q.getResultList();
     }
 }
