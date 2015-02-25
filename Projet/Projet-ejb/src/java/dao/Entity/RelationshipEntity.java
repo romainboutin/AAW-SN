@@ -33,11 +33,11 @@ public class RelationshipEntity implements Serializable {
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name="user_fk1")
+    @JoinColumn(name="rela_user_fk1")
     private UserEntity user;
     
     @ManyToOne
-    @JoinColumn(name="user_fk2")
+    @JoinColumn(name="rela_user_fk2")
     private UserEntity friend;
     
     @Column

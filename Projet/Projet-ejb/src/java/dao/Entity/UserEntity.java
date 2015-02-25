@@ -6,6 +6,7 @@
 package dao.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -49,16 +50,16 @@ public class UserEntity implements Serializable {
     @Column
     private String lastname;
     
-    @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<RelationshipEntity> relationships;
     
-    @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<NotificationEntity> notifications;
 
-    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<PrivateMessageEntity> privateMsgList;
     
-    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="from", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<PublicMessageEntity> publicMsgList;
     
     //========================================================================//
@@ -70,6 +71,9 @@ public class UserEntity implements Serializable {
         mail = null;
         firstname = null;
         lastname = null;
+        relationships = new ArrayList<>();
+        notifications = new ArrayList<>();
+        privateMsgList = new ArrayList<>();
     }
     
     public UserEntity(String login, String password, String mail, String firstname, String lastname) {
@@ -77,7 +81,10 @@ public class UserEntity implements Serializable {
         this.password = password;
         this.mail = mail;
         this.firstname = firstname;
-        this.lastname = lastname;        
+        this.lastname = lastname;
+        relationships = new ArrayList<>();
+        notifications = new ArrayList<>();
+        privateMsgList = new ArrayList<>();
     }
     
     //========================================================================//

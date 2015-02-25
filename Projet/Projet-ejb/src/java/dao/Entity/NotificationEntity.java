@@ -32,14 +32,6 @@ public class NotificationEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne
-    @JoinColumn(name = "user_fk")
-    private UserEntity user;
-    
-    @OneToOne
-    @JoinColumn(name = "friend_user_fk")
-    private UserEntity friend;
-    
     @Column
     private NotificationTypeEnum notifType;
     
@@ -47,25 +39,33 @@ public class NotificationEntity implements Serializable {
     private String notifText;
     
     @Column
-    private boolean read;
+    private Boolean isRead;
+    
+    @ManyToOne
+    @JoinColumn(name = "notif_user_fk1")
+    private UserEntity user;
+    
+    @OneToOne
+    @JoinColumn(name = "notif_user_fk2")
+    private UserEntity friend;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
     //========================================================================//
     public NotificationEntity() {
-        this.user = null;
-        this.friend = null;
         this.notifType = null;
         this.notifText = "";
-        this.read = false;
+        this.isRead = false;
+        this.user = null;
+        this.friend = null;
     }
     
     public NotificationEntity(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText) {
-        this.user = user;
-        this.friend = friend;
         this.notifType = notifType;
         this.notifText = notifText;
-        this.read = false;
+        this.isRead = false;
+        this.user = user;
+        this.friend = friend;
     }
     
     //========================================================================//
@@ -107,12 +107,12 @@ public class NotificationEntity implements Serializable {
         this.notifText = notifText;
     }
 
-    public boolean isRead() {
-        return read;
+    public Boolean isRead() {
+        return isRead;
     }
 
-    public void setRead(boolean read) {
-        this.read = read;
+    public void setIsRead(Boolean isRead) {
+        this.isRead = isRead;
     }
 
     //========================================================================//
