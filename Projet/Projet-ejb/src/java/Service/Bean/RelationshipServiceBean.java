@@ -22,72 +22,57 @@ import javax.ejb.Stateless;
 @Stateless
 public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
     
-    private RelationshipEntity re;
+    private RelationshipEntity re1;
+    private RelationshipEntity re2;
     
     @EJB
     private RelationshipSessionBeanLocal rsbl;
 
     @Override
     public void addFriend(UserEntity user, UserEntity friendToAdd) {
-        re = new RelationshipEntity();
-        re.setUserId1(user);
-        re.setUserId2(friendToAdd);
-        re.setRelationshipStatusEnum(RelationshipStatusEnum.PENDING);
-        rsbl.save(re);
+        re1 = new RelationshipEntity();
+        re1.setUserId1(user);
+        re1.setUserId2(friendToAdd);
+        re1.setRelationshipStatusEnum(RelationshipStatusEnum.PENDING);
+        
+        re2 = new RelationshipEntity();
+        re2.setUserId2(user);
+        re2.setUserId1(friendToAdd);
+        re2.setRelationshipStatusEnum(RelationshipStatusEnum.PENDING);
+        rsbl.save(re1);
+        rsbl.save(re2);
     }
 
     @Override
     public void addRelationship(UserEntity user, UserEntity friend, RelationshipStatusEnum relationshipStatus) {
-        re = new RelationshipEntity();
-        re.setUserId1(user);
-        re.setUserId2(friend);
-        re.setRelationshipStatusEnum(relationshipStatus);
-        rsbl.save(re);
+        re1 = new RelationshipEntity();
+        re1.setUserId1(user);
+        re1.setUserId2(friend);
+        re1.setRelationshipStatusEnum(relationshipStatus);
+        
+        re2 = new RelationshipEntity();
+        re2.setUserId2(user);
+        re2.setUserId1(friend);
+        re2.setRelationshipStatusEnum(relationshipStatus);
+        
+        rsbl.save(re1);
+        rsbl.save(re2);
     }
 
-    @Override
-    public void setRelationPending(UserEntity user, UserEntity friend) {
-        List<RelationshipEntity> listRelationship = user.getRelationships();
-        for(RelationshipEntity re : listRelationship) {
-            if(re.getUserId2().equals(friend)) {
-                re.setRelationshipStatusEnum(RelationshipStatusEnum.PENDING);
-            }
-        }
-        rsbl.update(re);
-    }
+ 
 
     @Override
     public void setRelationAccepted(UserEntity user, UserEntity friend) {
         List<RelationshipEntity> listRelationship = user.getRelationships();
         for(RelationshipEntity re : listRelationship) {
-            if(re.getUserId2().equals(friend)) {
+            if(re.getUserId2().equals(friend) && re.getUserId1().equals(user) || re.getUserId1().equals(friend) && re.getUserId2().equals(user)) {
                 re.setRelationshipStatusEnum(RelationshipStatusEnum.ACCEPTED);
+                rsbl.update(re);
             }
         }
-        rsbl.update(re);
+       
     }
 
-    @Override
-    public void setRelationDeclined(UserEntity user, UserEntity friend) {
-        List<RelationshipEntity> listRelationship = user.getRelationships();
-        for(RelationshipEntity re : listRelationship) {
-            if(re.getUserId2().equals(friend)) {
-                re.setRelationshipStatusEnum(RelationshipStatusEnum.DECLINED);
-            }
-        }
-        rsbl.update(re);
-    }
-
-    @Override
-    public void setRelationBlocked(UserEntity user, UserEntity friend) {
-        List<RelationshipEntity> listRelationship = user.getRelationships();
-        for(RelationshipEntity re : listRelationship) {
-            if(re.getUserId2().equals(friend)) {
-                re.setRelationshipStatusEnum(RelationshipStatusEnum.BLOCKED);
-            }
-        }
-        rsbl.update(re);
-    }
 
     @Override
     public List<RelationshipEntity> getAllRelationship(UserEntity user) {
@@ -100,9 +85,27 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
         List<RelationshipEntity> relationships = user.getRelationships();
         for(RelationshipEntity relationship : relationships) {
             if(relationship.getRelationshipStatusEnum().equals(RelationshipStatusEnum.ACCEPTED)) {
-                friends.add(relationship.getUserId2());
+                if(user.equals(relationship.getUserId1()))
+                    friends.add(relationship.getUserId2());
+                else
+                    friends.add(relationship.getUserId1());
             }
         }
         return friends;
+    }
+
+    @Override
+    public void setRelationPending(UserEntity user, UserEntity friend) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setRelationDeclined(UserEntity user, UserEntity friend) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setRelationBlocked(UserEntity user, UserEntity friend) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -64,12 +64,12 @@ public class RelationshipSessionBean implements RelationshipSessionBeanLocal {
 
     @Override
     public RelationshipEntity find(UserEntity user, UserEntity friend) {
-        List<RelationshipEntity> listRelationship = user.getRelationships();
+     /*   List<RelationshipEntity> listRelationship = user.getRelationships();
         for(RelationshipEntity re : listRelationship) {
             if(re.getUserId2().equals(friend)) {
                 return re;
             }
-        }
+        }*/
         return null;
     }
 }

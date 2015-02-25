@@ -42,6 +42,9 @@ and open the template in the editor.
                   <div class="form-group">
                     <input type="text" jsf:value="#{UserMB.searchtext}" placeholder="recherche" class="form-control" />
                     <button class="btn" jsf:action="#{UserMB.find()}"> Search! </button>
+                  </div>                    
+                  <div class="form-group">
+                    <button class="btn" jsf:action="#{UserMB.friends()}"> Amis </button>
                   </div>
                   <div class="form-group">
                     <button jsf:action="#{UserMB.logout()}" class="btn btn-success">logout <span class="glyphicon glyphicon-log-out"></span></button>
@@ -56,14 +59,9 @@ and open the template in the editor.
                 <div class="col-xs-4">
                 </div>
                 <div class="col-xs-4">
-                    <h:form>
-                        <ui:repeat value="#{UserMB.friends}" var="result">
-                            <div>
-                                <button jsf:action="#{UserMB.pm(result)}" class="btn" >private message to : #{result.firstname} - #{result.lastname}</button>
-                            </div>
-                            <br /> 
-                        </ui:repeat>
-                    </h:form>
+                    
+                    
+                    
                 </div>
                 <div class="col-xs-4">
                 </div>

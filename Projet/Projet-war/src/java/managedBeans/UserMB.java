@@ -36,6 +36,8 @@ public class UserMB {
     
     private List<PublicMessageEntity> publicMessages;
     private List<UserEntity> search;
+    private List<UserEntity> friends;
+    
     private UserEntity user;
     private String mail;
     private String mdp;
@@ -58,10 +60,9 @@ public class UserMB {
     
     public String login(){
         this.user = usbl.connect(mail,mdp);
-        
-        this.publicMessages = this.user.getPublicMsgList();
-    
+           
         if(user != null){
+            this.publicMessages = usbl.getWall(user);
             this.mail = user.getMail();
             this.firstname = user.getFirstname();
             this.lastname = user.getLastname();
@@ -74,7 +75,7 @@ public class UserMB {
     public void init(){
         //test user !=null
         this.user = usbl.reload(mail);
-        this.publicMessages = this.user.getPublicMsgList();
+        this.publicMessages = usbl.getWall(user);
     }
 
     public String newAccount(){
@@ -82,11 +83,12 @@ public class UserMB {
     }
     
     public String create(){    
-        usbl.newUser(mail, lastname, mail, firstname, lastname);
+        usbl.newUser(mail, mdp, mail, firstname, lastname);
         return "home.xhtml";
     }
     
     public String friends(){
+        this.friends = rsbl.getAllFriends(user);
         return "friends.xhtml";
     }
       
@@ -98,6 +100,10 @@ public class UserMB {
     public String addFriends(UserEntity f){
         rsbl.addFriend(user, f);
         return "home.xhtml";
+    }
+    
+    public String pm(UserEntity f){
+        return "privatemessage.xhtml";
     }
     
     public String logout(){
@@ -240,6 +246,22 @@ public class UserMB {
 
     public void setSearchtext(String searchtext) {
         this.searchtext = searchtext;
+    }
+
+    public RelationshipServiceBeanLocal getRsbl() {
+        return rsbl;
+    }
+
+    public void setRsbl(RelationshipServiceBeanLocal rsbl) {
+        this.rsbl = rsbl;
+    }
+
+    public List<UserEntity> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<UserEntity> friends) {
+        this.friends = friends;
     }
 
     

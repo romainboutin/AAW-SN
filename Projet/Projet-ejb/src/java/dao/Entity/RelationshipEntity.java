@@ -36,7 +36,7 @@ public class RelationshipEntity implements Serializable {
     @JoinColumn(name="rela_user_fk1")
     private UserEntity user;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="rela_user_fk2")
     private UserEntity friend;
     
