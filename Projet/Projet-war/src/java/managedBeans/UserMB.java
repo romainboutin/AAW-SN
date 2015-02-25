@@ -63,6 +63,12 @@ public class UserMB {
         else 
             return "index.xhtml";
     }
+    
+    public void init(){
+        //test user !=null
+        this.user = usbl.reload(mail);
+        this.publicMessages = this.user.getPublicMsgList();
+    }
 
     public String newAccount(){
         return "account.xhtml";
@@ -73,6 +79,14 @@ public class UserMB {
         return "home.xhtml";
     }
     
+    public String friends(){
+        return "friends.xhtml";
+    }
+      
+    public String find(){
+        return "friends.xhtml";
+    }
+        
     public String addFriends(UserEntity f){
         //
         return "";
@@ -114,7 +128,7 @@ public class UserMB {
         return "home.xhtml";
     }
     
-    
+    //////////////////////////////////////////////////////////////////////////////
     
     public String getMail() {
         return mail;

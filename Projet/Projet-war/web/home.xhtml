@@ -13,6 +13,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
+        #{UserMB.init()}
         <h:outputStylesheet name="dist/css/bootstrap.min.css" />
         <h:outputStylesheet name="dist/css/bootstrap-theme.min.css" />
         
@@ -42,10 +43,11 @@ and open the template in the editor.
                       <p style="color: white">#{UserMB.firstname} - #{UserMB.lastname}</p>
                   </div>
                   <div class="form-group">
-                      <button class="btn" jsf:action="#{HomeMB.friends()}"> Amis </button>
+                      <button class="btn" jsf:action="#{UserMB.friends()}"> Amis </button>
                   </div>
                   <div class="form-group">
                     <input type="text" placeholder="recherche" class="form-control" />
+                    <button class="btn" jsf:action="#{UserMB.find()}"> Amis </button>
                   </div>
                     <button jsf:action="#{UserMB.logout()}" class="btn btn-success">logout <span class="glyphicon glyphicon-log-out"></span></button>
                 </h:form>

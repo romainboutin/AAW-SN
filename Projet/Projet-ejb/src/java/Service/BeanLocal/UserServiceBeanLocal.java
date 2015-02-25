@@ -16,4 +16,5 @@ import javax.ejb.Local;
 public interface UserServiceBeanLocal {    
     public boolean newUser(String login, String password, String mail, String firstname, String lastname);
     public UserEntity connect(String login, String password);
+    public UserEntity reload(String login);
 }

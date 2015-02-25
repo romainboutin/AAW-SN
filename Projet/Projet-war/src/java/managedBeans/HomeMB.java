@@ -24,7 +24,5 @@ public class HomeMB {
         
     }
     
-    public String friends(){
-        return "friends.xhtml";
-    }
+
 }

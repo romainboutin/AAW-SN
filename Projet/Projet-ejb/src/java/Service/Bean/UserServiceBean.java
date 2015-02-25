@@ -41,6 +41,14 @@ public class UserServiceBean implements UserServiceBeanLocal{
         }
         else return null;
     }
+
+    @Override
+    public UserEntity reload(String login) {
+        user = usbl.findByMail(login);
+        if(user != null)
+            return user;
+        else return null;
+    }
     
   
     

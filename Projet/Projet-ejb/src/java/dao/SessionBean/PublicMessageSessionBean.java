@@ -5,6 +5,7 @@
  */
 package dao.SessionBean;
 
+import dao.SessionBeanLocal.PublicMessageSessionBeanLocal;
 import dao.Entity.PublicMessageEntity;
 import dao.Entity.UserEntity;
 import java.util.List;

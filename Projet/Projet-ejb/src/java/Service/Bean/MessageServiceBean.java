@@ -9,7 +9,7 @@ import Service.BeanLocal.MessageServiceBeanLocal;
 import dao.Entity.MessageEntity;
 import dao.Entity.PublicMessageEntity;
 import dao.Entity.UserEntity;
-import dao.SessionBean.PublicMessageSessionBeanLocal;
+import dao.SessionBeanLocal.PublicMessageSessionBeanLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
