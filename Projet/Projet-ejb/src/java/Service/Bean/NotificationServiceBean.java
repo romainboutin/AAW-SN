@@ -36,6 +36,11 @@ public class NotificationServiceBean implements NotificationServiceBeanLocal {
     public List<NotificationEntity> getAllNotification(UserEntity user) {
         return user.getNotifications();
     }
+
+    @Override
+    public void setNotificationRead(NotificationEntity notification) {
+        notification.setRead(true);
+    }
 }
 
 

@@ -45,6 +45,9 @@ public class NotificationEntity implements Serializable {
     
     @Column
     private String notifText;
+    
+    @Column
+    private boolean read;
 
     //========================================================================//
     //== CONSTRUCTORS ========================================================//
@@ -54,6 +57,7 @@ public class NotificationEntity implements Serializable {
         this.friend = null;
         this.notifType = null;
         this.notifText = "";
+        this.read = false;
     }
     
     public NotificationEntity(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText) {
@@ -61,6 +65,7 @@ public class NotificationEntity implements Serializable {
         this.friend = friend;
         this.notifType = notifType;
         this.notifText = notifText;
+        this.read = false;
     }
     
     //========================================================================//
@@ -100,6 +105,14 @@ public class NotificationEntity implements Serializable {
 
     public void setNotifText(String notifText) {
         this.notifText = notifText;
+    }
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
     }
 
     //========================================================================//

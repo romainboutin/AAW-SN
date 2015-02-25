@@ -18,5 +18,6 @@ import javax.ejb.Local;
 @Local
 public interface NotificationServiceBeanLocal {
     public void addNotification(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText);
+    public void setNotificationRead(NotificationEntity notification);
     public List<NotificationEntity> getAllNotification(UserEntity user);
 }
