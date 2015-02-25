@@ -5,6 +5,7 @@
  */
 package Service.BeanLocal;
 
+import dao.Entity.PublicMessageEntity;
 import dao.Entity.UserEntity;
 import java.util.List;
 import javax.ejb.Local;
@@ -19,5 +20,5 @@ public interface UserServiceBeanLocal {
     public UserEntity connect(String login, String password);
     public UserEntity reload(String login);
     public List<UserEntity> find(String str);
-    public List<UserEntity> findMyFriend(UserEntity u);
+    public List<PublicMessageEntity> getWall(UserEntity u);
 }
