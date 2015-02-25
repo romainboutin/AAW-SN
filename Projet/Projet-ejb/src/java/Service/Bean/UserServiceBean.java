@@ -49,7 +49,6 @@ public class UserServiceBean implements UserServiceBeanLocal{
             return user;
         else return null;
     }
-    
-  
-    
 }
+
+

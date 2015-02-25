@@ -10,6 +10,7 @@ import dao.Entity.UserEntity;
 import dao.Entity.RelationshipEntity;
 import dao.SessionBeanLocal.RelationshipSessionBeanLocal;
 import dao.Utils.RelationshipStatusEnum;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -86,5 +87,22 @@ public class RelationshipServiceBean implements RelationshipServiceBeanLocal {
             }
         }
         rsbl.update(re);
+    }
+
+    @Override
+    public List<RelationshipEntity> getAllRelationship(UserEntity user) {
+        return user.getRelationships();
+    }
+
+    @Override
+    public List<UserEntity> getAllFriends(UserEntity user) {
+        List<UserEntity> friends = new ArrayList<>();
+        List<RelationshipEntity> relationships = user.getRelationships();
+        for(RelationshipEntity relationship : relationships) {
+            if(relationship.getRelationshipStatusEnum().equals(RelationshipStatusEnum.ACCEPTED)) {
+                friends.add(relationship.getUserId2());
+            }
+        }
+        return friends;
     }
 }

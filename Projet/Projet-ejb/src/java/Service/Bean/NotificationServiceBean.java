@@ -6,9 +6,10 @@
 package Service.Bean;
 
 import Service.BeanLocal.NotificationServiceBeanLocal;
-import dao.Entity.MessageEntity;
 import dao.Entity.NotificationEntity;
 import dao.Entity.UserEntity;
+import dao.SessionBeanLocal.NotificationSessionBeanLocal;
+import dao.Utils.NotificationTypeEnum;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -23,19 +24,17 @@ public class NotificationServiceBean implements NotificationServiceBeanLocal {
     private NotificationEntity ne;
     
     @EJB
-    private NotificationServiceBeanLocal nsbl;
+    private NotificationSessionBeanLocal nsbl;
 
     @Override
-    public void addNotification(UserEntity user, MessageEntity msg) {
-        ne = new NotificationEntity();
-        //nsbl.save(ne);
+    public void addNotification(UserEntity user, UserEntity friend, NotificationTypeEnum notifType, String notifText) {
+        ne = new NotificationEntity(user, friend, notifType, notifText);
+        nsbl.save(ne);
     }
 
     @Override
     public List<NotificationEntity> getAllNotification(UserEntity user) {
-        ne = new NotificationEntity();
-        //nsbl.save(ne);
-        return null;
+        return user.getNotifications();
     }
 }
 
